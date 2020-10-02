@@ -12,3 +12,4 @@ This site is the third of four Milestone Projects that made up the Full Stack We
 
 ## Articles & Videos
 * https://medium.com/@rsk.saikrishna/when-to-use-mongodb-rather-than-mysql-d03ceff2e922
+* Manual on how to work with env variable - https://pypi.org/project/environs/
