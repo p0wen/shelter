@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Edit Gear</h1>
+
+<form action="{{ url_for('update_gear', gear_id=gear._id) }}" method="POST">
+  <div class="form-group">
+    <label for="modelInput">Model</label>
+    <input
+      type="text"
+      class="form-control"
+      id="model"
+      name="model"
+      placeholder="e.g. Better-Sweater"
+      value="{{gear.model}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="brandInput">Brand</label>
+    <input
+      type="text"
+      class="form-control"
+      id="brand"
+      name="brand"
+      placeholder="e.g. Patagonia"
+      value="{{gear.brand}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="categoryInput">Category</label>
+    <select class="form-control" id="category">
+      <option selected disabled value="">Choose your Category</option>
+      {% for cat in categories %}
+        {% if cat.category_name == gear.category_name %}
+            <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
+        {% else %}
+            <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="descriptionInput">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      name="description"
+      rows="3"
+    >{{gear.description}}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="ratingInput">Gear Rating (1 to 5*)</label>
+    <input
+      type="number"
+      class="form-control"
+      id="rating"
+      name="rating"
+      value="{{gear.score}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">URL of Image</label>
+    <input
+      type="text"
+      class="form-control"
+      id="img_url"
+      name="img_url"
+      value="{{gear.img_url}}"
+    />
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Add Gear</button>
+  </div>
+</form>
+
+{% endblock %}

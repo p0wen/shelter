@@ -30,6 +30,27 @@ def insert_gear():
     gear.insert_one(request.form.to_dict())
     return redirect(url_for('get_gear'))
 
+@app.route('/edit_gear/<gear_id>')
+def edit_gear(gear_id):
+    the_gear = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
+    all_categories = mongo.db.categories.find()
+    return render_template('edit_gear.html', gear=the_gear, categories=all_categories)
+
+
+@app.route('/update_gear/<gear_id>', methods=["POST"])
+def update_gear(gear_id):
+    gear = mongo.db.gear
+    gear.update({'_id': ObjectId(gear_id)},
+                {
+        'model': request.form.get('model'),
+        'brand': request.form.get('brand'),
+        'category_name': request.form.get('category_name'),
+        'decription': request.form.get('description'),
+        'score': request.form.get('score'),
+        'img_url': request.form.get('img_url')
+    })
+    return redirect(url_for('get_gear'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
