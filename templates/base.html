@@ -12,15 +12,15 @@
     
     <!-- local css -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
-    
+
     <title>Shelter</title>
 </head>
 
 <body>
-	<h1>Outside</h1>
+	<div class="container-fluid">
 	{% block content %}
 	{% endblock %}
-
+    </div>
 	<!-- external JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
