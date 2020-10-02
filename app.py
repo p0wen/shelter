@@ -51,6 +51,11 @@ def update_gear(gear_id):
     })
     return redirect(url_for('get_gear'))
 
+@app.route('/delete_gear/<gear_id>')
+def delete_gear(gear_id):
+    mongo.db.gear.remove({'_id': ObjectId(gear_id)})
+    return redirect(url_for('get_gear'))
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
