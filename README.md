@@ -1,6 +1,6 @@
 # Work in progress!
 
-# Milestone Project 3 with *Code Isntitute*
+# Milestone Project 3 with *Code Institute*
 
 *Shelter* allows users to browse and report the newest and most necessary outdoor gear on the market.
 
