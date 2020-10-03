@@ -45,7 +45,7 @@ def update_gear(gear_id):
         'model': request.form.get('model'),
         'brand': request.form.get('brand'),
         'category_name': request.form.get('category_name'),
-        'decription': request.form.get('description'),
+        'description': request.form.get('description'),
         'score': request.form.get('score'),
         'img_url': request.form.get('img_url')
     })
