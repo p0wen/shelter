@@ -12,7 +12,8 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def welcome():
-    return 'Welcome Stranger - Lets do this!'
+    gear_collection = mongo.db.gear.find()
+    return render_template("index.html", gear_collection = list(gear_collection))
 
 
 @app.route('/get_gear')
