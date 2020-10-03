@@ -25,3 +25,13 @@
 .shelter-blue {
     color: #033f63;
 }
+
+/** Spacer **/
+
+.h2-spacer {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 5px solid #288666;
+    width: 100px;
+}
