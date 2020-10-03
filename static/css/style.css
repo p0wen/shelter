@@ -1,0 +1,27 @@
+/* CSS main site styling */
+.body-shelter {
+  background-color: #f9f7f2;
+}
+
+.nav-shelter {
+  background: #033f63;
+}
+
+.navbar-dark {
+  color: #f9f7f2;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.btn-primary-shltr {
+  background: #fedc97;
+  border: 2px solid #fedc97;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.shelter-blue {
+    color: #033f63;
+}

@@ -2,25 +2,52 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+	<!-- Required meta tags -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- external css (bootstrap) -->
+	<!-- external css (bootstrap) -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
-    <!-- local css -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
 
-    <title>Shelter</title>
+	<!-- local css -->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+
+	<title>Shelter</title>
 </head>
 
-<body>
-	<div class="container-fluid">
-	{% block content %}
-	{% endblock %}
-    </div>
+<body class="body-shelter">
+
+		<!-- Navbar -->
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark nav-shelter">
+			<a class="navbar-brand"
+				href="#"><img src="{{url_for('static', filename='images/shelter_logo.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Shelter</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Gear Gallery</a>
+						</li>
+					</ul>
+				</div>
+		</nav>
+
+		<!-- Core Content -->
+		<div class="container">
+			{% block content %}
+			{% endblock %}
+		</div>
+
+		<!-- Footer -->
+		<nav class="navbar sticky-bottom navbar-dark nav-shelter">
+			<a class="navbar-brand" href="#">Fixed bottom</a>
+		</nav>
+
 	<!-- external JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -31,7 +58,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 	</script>
-    <!-- internal JS -->
+	<!-- internal JS -->
 </body>
 
 </html>
