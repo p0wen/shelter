@@ -5,35 +5,39 @@
 <h2>Featured Gear</h2>
 <div class="h2-spacer"></div>
 
-
-{% for gear in gear_collection %}
-    {% if gear.is_featured %}
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{gear.model}} - {{gear.brand}}</h5>
-                        <p class="card-text">#{{gear.category_name}}</p>
-                        <p class="card-text">{{gear.description}}</p>
-                        <p class="card-text"><small class="text-muted">Rating: 	{{gear.score}}</small></p>
-                        <a href="{{url_for('delete_gear', gear_id=gear._id)}}" role="button" class="btn btn-outline-danger btn-sm">Delete</a>
-                        <a href="{{url_for('edit_gear', gear_id=gear._id)}}" role="button" class="btn btn-outline-secondary btn-sm">Edit</a>
-                    </div>
-                </div>
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for feat in rdm_feat %}
+    <li data-target="#carouselExampleCaptions" data-slide-to="{{ loop.cycle('1','2', '3') }}" class="{{ loop.cycle('active','', '') }}"></li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+    {% for feat in rdm_feat %}
+            <div class="carousel-item {{ loop.cycle('active','', '') }}">
+            <img src="{{item.img_url}}" class="d-block w-100" alt="Image of {{item.model}}">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{feat.model}} - {{feat.brand}}</h5>
+                <p>{{feat.description}}</p>
+                <p>{{feat.is_featured}}</p>
             </div>
-    </div>
-    {% endif %}
-	
-{% endfor %}
+            </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 
 <h2>Recent Gear</h2>
 <div class="h2-spacer"></div>
 
-{% for gear in gear_collection %}
-    {% if not gear.is_featured %}
+{% for gear in gear_collection if not gear.is_featured %}
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
@@ -51,7 +55,6 @@
                 </div>
             </div>
     </div>
-    {% endif %}
 {% endfor %}
 
 {% endblock %}
