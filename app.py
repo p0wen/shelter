@@ -22,7 +22,7 @@ mongo.db.gear.create_index([
 def index():
     gear_collection = mongo.db.gear.find()
     cursor = mongo.db.gear.aggregate(
-        [{'$match': {'is_featured': 'true'}},
+        [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
     gear_collection = mongo.db.gear.find()
     return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_collection))
