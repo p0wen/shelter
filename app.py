@@ -18,7 +18,8 @@ mongo.db.gear.create_index([
 ])
 
 @app.route('/')
-def welcome():
+@app.route('/index')
+def index():
     gear_collection = mongo.db.gear.find()
     cursor = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': 'true'}},
