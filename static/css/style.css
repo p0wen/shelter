@@ -39,14 +39,14 @@
 /** Cards in Gallery .body-shelter **/
 
 .card-custom {
-max-width: 260px;
+max-width: 19rem;
 object-fit: cover;
 object-position: center center;
 }
 
 .card-custom img {
     width: 100%;
-    min-height: 170px;
+    min-height: 14rem;
     object-fit: cover;
     object-position: center center;
 }
@@ -56,3 +56,40 @@ object-position: center center;
     background-color: transparent;
     border-top: none;
 }
+
+
+@media (max-width: 575.98px) { 
+    .card-custom {
+        max-width: 100%;
+    }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+        .card-custom {
+        max-width: 15rem;
+    }
+ }
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+        .card-custom {
+        max-width: 14rem;
+    }
+ }
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+        .card-custom {
+        max-width: 19rem;
+    }
+}
+
+@media (min-width: 1200px) {   
+    .card-custom {
+        max-width: 22.5rem;
+    } 
+    .card-custom img {
+    min-height: 20rem;
+
+}
+    }
+/* insert media querys for tablet (max-width 14rem), mobile l (12ren), mobile m and smaller (max-width: 100%) */

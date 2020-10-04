@@ -2,14 +2,15 @@
 {% block nav_gallery %}active{% endblock %}
 {% block content %}
 
-<h1>Gear Gallery Test-Site</h1>
+<h2>Gear Recommendations</h2>
+<div class="h2-spacer"></div>
 
-<div class="container">
-    <div class="row mt-5 justify-content-center">
+<div class="container-fluid">
+    <div class="row justify-content-between">
 {% for gear in gear_collection %}
 
 
-            <div class="card card-custom mx-1 mb-2"">
+            <div class="card card-custom mb-1">
 			<img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">
             <div class="card-body">
                 <h5 class="card-title">{{gear.model}}</h5>
