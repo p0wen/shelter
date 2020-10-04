@@ -52,6 +52,10 @@ def insert_gear():
     gear.insert_one(request.form.to_dict())
     return redirect(url_for('get_gear'))
 
+@app.route('/gear_details/<gear_id>')
+def gear_details(gear_id):
+    gear_details = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
+    return render_template('gear_details.html', gear_details=gear_details)
 
 @app.route('/edit_gear/<gear_id>')
 def edit_gear(gear_id):

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block nav_gallery %}active{% endblock %}
+{% block content %}
+
+<h2>{{gear_details.model}} - {{gear_details.brand}}</h2>
+<div class="h2-spacer"></div>
+
+
+<div class="card mb-3">
+  <img class="card-img-top" src="{{gear_details.img_url}}" alt="{{gear_details.model}} - {{gear_details.brand}}">
+        <div class="card-body text-center">
+            <p class="card-text"><small>#{{gear_details.category_name}}</small></p>
+            <h5 class="card-title">{{gear_details.model}} - {{gear_details.brand}}</h5>
+            <p class="card-text">{{gear_details.description}}</p>
+            <p class="card-text text-bottom"><small class="text-muted">Rating:<br>{{gear_details.score}} Stars</small></p>
+        </div>
+        <div class="card-footer card-footer-shelter text-center">
+            <a href="https://www.google.com/search?q={{gear_details.brand}}" class="btn btn-primary ">Explore Brand</a>
+        </div>
+    </div>
+
+
+{% endblock %}
