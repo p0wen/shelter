@@ -10,16 +10,18 @@
 {% for gear in gear_collection %}
 
 
-            <div class="card card-custom mb-1">
+        <div class="card card-custom mb-1">
 			<img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">
             <div class="card-body">
-                <h5 class="card-title">{{gear.model}}</h5>
+                <h5 class="card-title">{{gear.model}} - {{gear.brand}}</h5>
+                <p class="card-text"><small>#{{gear.category_name}}</small></p>
                 <p class="card-text">{{gear.description}}</p>
+                <p class="card-text"><small class="text-muted">Rating: 	{{gear.score}}</small></p>
             </div>
             <div class="card-footer card-footer-shelter">
                 <a href="#" class="btn btn-primary ">Details</a>
             </div>
-            </div>
+        </div>
 	
 {% endfor %}
     </div>
