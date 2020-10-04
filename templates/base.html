@@ -17,9 +17,9 @@
 </head>
 
 <body class="body-shelter">
-
+    <wrapper class="d-flex flex-column">
 		<!-- Navbar -->
-		<nav class="navbar sticky-top navbar-expand-lg navbar-dark nav-shelter">
+		<nav class="navbar sticky-top navbar-expand-sm navbar-dark nav-shelter">
 			<a class="navbar-brand"
 				href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/shelter_logo.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Shelter</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,15 +53,20 @@
 		</nav>
 
 		<!-- Core Content -->
-		<div class="container">
+        <main class="flex-fill">
+		<div class="container mt-2">
 			{% block content %}
 			{% endblock %}
 		</div>
+        </main>
 
 		<!-- Footer -->
-		<nav class="navbar sticky-bottom navbar-dark nav-shelter">
-			<a class="navbar-brand" href="#">Fixed bottom</a>
-		</nav>
+		<footer class="footer">
+            <div class="container">
+                <span class="text-muted">Place sticky footer content here.</span>
+            </div>
+        </footer>
+    </wrapper>
 
 	<!-- external JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
