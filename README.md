@@ -13,3 +13,6 @@ This site is the third of four Milestone Projects that made up the Full Stack We
 ## Articles & Videos
 * https://medium.com/@rsk.saikrishna/when-to-use-mongodb-rather-than-mysql-d03ceff2e922
 * Manual on how to work with env variable - https://pypi.org/project/environs/
+* how to make data available for more than one interaction - https://stackoverflow.com/questions/57537866/two-for-loops-in-one-html-page-using-jinja-not-working
+* how to work with loop.cycle webforefront.com/django/usebuiltinjinjastatements.html
+* how to integrate a search function https://dzone.com/articles/flask-101-how-to-add-a-search-form
