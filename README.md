@@ -16,3 +16,9 @@ This site is the third of four Milestone Projects that made up the Full Stack We
 * how to make data available for more than one interaction - https://stackoverflow.com/questions/57537866/two-for-loops-in-one-html-page-using-jinja-not-working
 * how to work with loop.cycle webforefront.com/django/usebuiltinjinjastatements.html
 * how to integrate a search function https://dzone.com/articles/flask-101-how-to-add-a-search-form
+* how to search through collections https://stackoverflow.com/questions/2824157/random-record-from-mongodb
+* how to work with $sample https://docs.mongodb.com/manual/reference/operator/aggregation/sample/
+* building a search field with button included https://www.codeply.com/go/ioPsDfyCBc
+* how to style active element in nav https://stackoverflow.com/questions/21991820/style-active-navigation-element-with-a-flask-jinja2-macro
+* refresh on css skills https://stackoverflow.com/questions/43119635/fill-div-with-image-without-stretching
+* how to make sticky footer really sticky https://medium.com/@mschenk22/bootstrap-4-footer-at-bottom-not-sticky-dynamic-footer-height-b37ccec837e2ss
