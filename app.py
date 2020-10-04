@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -24,6 +24,7 @@ def index():
     cursor = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
+            
     gear_collection = mongo.db.gear.find()
     return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_collection))
 
@@ -31,8 +32,8 @@ def index():
 @app.route('/', methods=["POST"])
 def search():
     search_this_string = request.form['search']
-    results = mongo.db.gear.find({"$text": {"$search": search_this_string}})
-    return render_template("searchresults.html", result=list(results))
+    cursor = mongo.db.gear.find({"$text": {"$search": search_this_string}})
+    return render_template("searchresults.html", result=list(cursor))
 
 
 @app.route('/get_gear')
