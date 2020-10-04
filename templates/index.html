@@ -15,12 +15,13 @@
   <div class="carousel-inner">
     {% for feat in rdm_feat %}
             <div class="carousel-item {{ loop.cycle('active','', '') }}">
+            <a  href="{{url_for('gear_details', gear_id=feat._id)}}">
             <img src="{{feat.img_url}}" class="d-block w-100" alt="Image of {{feat.model}}">
             <div class="carousel-caption d-none d-md-block">
                 <h5>{{feat.model}} - {{feat.brand}}</h5>
                 <p>{{feat.description}}</p>
-                <p>{{feat.is_featured}}</p>
             </div>
+            </a>
             </div>
     {% endfor %}
   </div>
@@ -50,7 +51,7 @@
                 <p class="card-text short-description">{{gear.description}}</p>
             </div>
             <div class="card-footer card-footer-shelter text-center">
-                <a href="#" class="btn btn-primary ">Read More...</a>
+                <a href="{{url_for('gear_details', gear_id=gear._id)}}" class="btn btn-primary ">Read More...</a>
             </div>
         </div>
 {% endfor %}
