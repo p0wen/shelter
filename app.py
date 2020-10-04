@@ -13,7 +13,8 @@ mongo = PyMongo(app)
 mongo.db.gear.create_index([
      ('model', 'text'),
      ('brand', 'text'),
-     ('description', 'text')
+     ('description', 'text'),
+     ('category_name', 'text')
 ])
 
 @app.route('/')
