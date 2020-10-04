@@ -35,3 +35,24 @@
     border-top: 5px solid #288666;
     width: 100px;
 }
+
+/** Cards in Gallery .body-shelter **/
+
+.card-custom {
+max-width: 260px;
+object-fit: cover;
+object-position: center center;
+}
+
+.card-custom img {
+    width: 100%;
+    min-height: 170px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.card-footer-shelter {
+    padding: .75rem 1.25rem;
+    background-color: transparent;
+    border-top: none;
+}
