@@ -42,19 +42,17 @@
     <div class="row justify-content-between">
 
 {% for gear in gear_collection if not gear.is_featured %}
-        <div class="card card-custom mb-1">
+       <div class="card card-custom mb-1">
 			<img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">
-            <div class="card-body">
-                <h5 class="card-title">{{gear.model}} - {{gear.brand}}</h5>
+            <div class="card-body text-center">
                 <p class="card-text"><small>#{{gear.category_name}}</small></p>
-                <p class="card-text">{{gear.description}}</p>
-                <p class="card-text"><small class="text-muted">Rating: 	{{gear.score}}</small></p>
+                <h5 class="card-title">{{gear.model}} - {{gear.brand}}</h5>
+                <p class="card-text short-description">{{gear.description}}</p>
             </div>
-            <div class="card-footer card-footer-shelter">
-                <a href="#" class="btn btn-primary ">Details</a>
+            <div class="card-footer card-footer-shelter text-center">
+                <a href="#" class="btn btn-primary ">Read More...</a>
             </div>
         </div>
-        
 {% endfor %}
     </div>
 </div>

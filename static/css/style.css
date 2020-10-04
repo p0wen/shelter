@@ -57,6 +57,12 @@ object-position: center center;
     border-top: none;
 }
 
+.short-description {
+    width: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 @media (max-width: 575.98px) { 
     .card-custom {
