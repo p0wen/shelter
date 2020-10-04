@@ -19,7 +19,7 @@
                 <p class="card-text text-bottom"><small class="text-muted">Rating:<br>{{gear.score}} Stars</small></p>
             </div>
             <div class="card-footer card-footer-shelter text-center">
-                <a href="#" class="btn btn-primary ">Read More...</a>
+                <a href="{{url_for('gear_details', gear_id=gear._id)}}" class="btn btn-primary ">Read More...</a>
             </div>
         </div>
 	
