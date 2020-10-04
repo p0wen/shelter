@@ -5,24 +5,22 @@
 <h2>Search Results</h2>
 <div class="h2-spacer"></div>
 
+<div class="container-fluid">
+    <div class="row justify-content-between">
 {% for item in result %}
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="{{item.img_url}}" class="card-img" alt="Gear Picture">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{item.model}} - {{item.brand}}</h5>
-                        <p class="card-text">#{{item.category_name}}</p>
-                        <p class="card-text">{{item.description}}</p>
-                        <p class="card-text"><small class="text-muted">Rating: 	{{item.score}}</small></p>
-                        <a href="{{url_for('delete_gear', gear_id=item._id)}}" role="button" class="btn btn-outline-danger btn-sm">Delete</a>
-                        <a href="{{url_for('edit_gear', gear_id=item._id)}}" role="button" class="btn btn-outline-secondary btn-sm">Edit</a>
-                    </div>
-                </div>
+ <div class="card card-custom mb-1">
+			<img src="{{item.img_url}}" class="card-img" alt="Gear Picture">
+            <div class="card-body text-center">
+                <p class="card-text"><small>#{{item.category_name}}</small></p>
+                <h5 class="card-title">{{item.model}} - {{item.brand}}</h5>
+                <p class="card-text short-description">{{item.description}}</p>
+                <p class="card-text text-bottom"><small class="text-muted">Rating:<br>{{item.score}} Stars</small></p>
             </div>
-    </div>
+            <div class="card-footer card-footer-shelter text-center">
+                <a href="{{url_for('gear_details', gear_id=item._id)}}" class="btn btn-primary ">Read More...</a>
+            </div>
+        </div>
 {% endfor %}
-
+   </div>
+</div>
 {% endblock %}
