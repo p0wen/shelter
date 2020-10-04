@@ -10,26 +10,46 @@ app.config.from_object('env')
 mongo = PyMongo(app)
 
 
+mongo.db.gear.create_index([
+     ('model', 'text'),
+     ('brand', 'text'),
+     ('description', 'text')
+])
+
 @app.route('/')
 def welcome():
     gear_collection = mongo.db.gear.find()
-    return render_template("index.html", gear_collection = list(gear_collection))
+    cursor = mongo.db.gear.aggregate(
+        [{'$match': {'is_featured': 'true'}},
+         {'$sample': {'size': 3}}])
+    gear_collection = mongo.db.gear.find()
+    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_collection))
+
+
+@app.route('/', methods=["POST"])
+def search():
+    search_this_string = request.form['search']
+    results = mongo.db.gear.find({"$text": {"$search": search_this_string}})
+    return render_template("searchresults.html", result=list(results))
 
 
 @app.route('/get_gear')
 def get_gear():
     return render_template("gallery.html", gear_collection=mongo.db.gear.find())
 
+
 @app.route('/add_gear')
 def add_gear():
     return render_template('add_gear.html',
                            categories=mongo.db.categories.find())
+
 
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
     gear = mongo.db.gear
     gear.insert_one(request.form.to_dict())
     return redirect(url_for('get_gear'))
+
 
 @app.route('/edit_gear/<gear_id>')
 def edit_gear(gear_id):
@@ -52,11 +72,13 @@ def update_gear(gear_id):
     })
     return redirect(url_for('get_gear'))
 
+
 @app.route('/delete_gear/<gear_id>')
 def delete_gear(gear_id):
     mongo.db.gear.remove({'_id': ObjectId(gear_id)})
     return redirect(url_for('get_gear'))
-    
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

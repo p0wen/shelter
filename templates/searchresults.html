@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Search Results</h2>
+<div class="h2-spacer"></div>
+
+{% for item in result %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{item.img_url}}" class="card-img" alt="Gear Picture">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.model}} - {{item.brand}}</h5>
+                        <p class="card-text">#{{item.category_name}}</p>
+                        <p class="card-text">{{item.description}}</p>
+                        <p class="card-text"><small class="text-muted">Rating: 	{{item.score}}</small></p>
+                        <a href="{{url_for('delete_gear', gear_id=item._id)}}" role="button" class="btn btn-outline-danger btn-sm">Delete</a>
+                        <a href="{{url_for('edit_gear', gear_id=item._id)}}" role="button" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
