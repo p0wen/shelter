@@ -21,13 +21,12 @@ mongo.db.gear.create_index([
 @app.route('/')
 @app.route('/index')
 def index():
-    gear_collection = mongo.db.gear.find()
+    gear = mongo.db.gear.find()
     cursor = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
-    gear_collection = mongo.db.gear.find()
-    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_collection))
-
+    gear_sorted = gear.sort("datecreated", -1).limit(6)
+    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted))
 
 
 @app.route('/', methods=["POST"])
