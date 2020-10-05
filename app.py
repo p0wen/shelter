@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
+from datetime import date
 from bson.objectid import ObjectId
 
 app = Flask('__name__')
@@ -24,9 +25,9 @@ def index():
     cursor = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
-            
     gear_collection = mongo.db.gear.find()
     return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_collection))
+
 
 
 @app.route('/', methods=["POST"])
@@ -50,7 +51,18 @@ def add_gear():
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
     gear = mongo.db.gear
-    gear.insert_one(request.form.to_dict())
+    created_on = date.today()
+    new_doc = {
+        "datecreated": created_on.isoformat(),
+        'model': request.form.get('model'),
+        'brand': request.form.get('brand'),
+        'category_name': request.form.get('category_name'),
+        'description': request.form.get('description'),
+        'score': request.form.get('score'),
+        'img_url': request.form.get('img_url'),
+        'is_featured': False
+    }
+    gear.insert_one(new_doc)
     return redirect(url_for('get_gear'))
 
 @app.route('/gear_details/<gear_id>')
