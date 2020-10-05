@@ -69,7 +69,7 @@ object-position: center center;
 
 .card-custom img {
     width: 100%;
-    min-height: 14rem;
+    height: 14rem;
     object-fit: cover;
     object-position: center center;
 }
