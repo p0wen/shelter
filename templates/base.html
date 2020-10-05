@@ -19,7 +19,7 @@
 <body class="body-shelter">
     <wrapper class="d-flex flex-column">
 		<!-- Navbar -->
-		<nav class="navbar sticky-top navbar-expand-sm navbar-dark nav-shelter">
+		<nav class="navbar sticky-top navbar-expand-md navbar-dark nav-shelter">
 			<a class="navbar-brand"
 				href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/shelter_logo.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Shelter</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,22 +34,31 @@
 							<a class="nav-link" href="{{url_for('get_gear')}}">Gear Gallery</a>
 						</li>
 					</ul>
-<form method="POST" action="/">
-  <div class="form-row align-items-center">
-    <div class="col-auto">
-					<div class="input-group input-group-sm">
-       				<input class="form-control py-2 border-right-0 border" formmethod="POST" type="search" value="" name="search" id="search" placeholder="Search">
-						<span class="input-group-append">
-                            <button class="btn btn-primary-shltr border-left-0 border pr" action="url_for{{'search'}}" type="submit" id="searchbtn">
-                                <svg width="1em" height="1em" class="bi bi-search shelter-blue" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"></path>
-                                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
-                                </svg>
-                            </button>
-                        </span>
-					</div>
+                <form method="POST" action="/">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                                    <div class="input-group input-group-sm">
+                                    <input class="form-control py-2 border-right-0 border" formmethod="POST" type="search" value="" name="search" id="search" placeholder="Search">
+                                        <span class="input-group-append">
+                                            <button class="btn btn-primary-shltr border-left-0 border pr" action="url_for{{'search'}}" type="submit" id="searchbtn">
+                                                <svg width="1em" height="1em" class="bi bi-search shelter-blue" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"></path>
+                                                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
                 </form>
-				</div>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                     <a href="{{url_for('signup')}}" class="btn btn-sm btn-primary mr-1 ml-1">Sign Up!</a>
+                    </li>
+                    <li class="nav-item">
+                     <a href="{{url_for('signin')}}" class="btn btn-sm btn-danger">Log In!</a>
+                    </li>
+                </ul>
 		</nav>
 
 		<!-- Core Content -->
@@ -67,6 +76,41 @@
             </div>
         </footer>
     </wrapper>
+
+    <!-- Log in -->
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form action="{{ url_for('signin') }}" method=POST>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="usersname" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+
+        </div>
+        <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+<div class="text-center">
+
+</div>
 
 	<!-- external JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

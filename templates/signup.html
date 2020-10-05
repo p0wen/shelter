@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<div class="container">
+            <form action="{{ url_for('signup') }}" method=POST>
+                <div class="form-group">
+                    <label for="InputUsername">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" aria-describedby="username" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="InputPassword">Password</label>
+                    <input type="password" class="form-control" id="pass" name="pass" autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

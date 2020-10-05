@@ -1,25 +1,27 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from datetime import date
 from bson.objectid import ObjectId
+import bcrypt
 
 app = Flask('__name__')
 
 app.config.from_object('env')
 
+
+# Global Variables
 mongo = PyMongo(app)
 
-
 mongo.db.gear.create_index([
-     ('model', 'text'),
-     ('brand', 'text'),
-     ('description', 'text'),
-     ('category_name', 'text')
+    ('model', 'text'),
+    ('brand', 'text'),
+    ('description', 'text'),
+    ('category_name', 'text')
 ])
 
+
 @app.route('/')
-@app.route('/index')
 def index():
     gear = mongo.db.gear.find()
     cursor = mongo.db.gear.aggregate(
@@ -27,6 +29,57 @@ def index():
          {'$sample': {'size': 3}}])
     gear_sorted = gear.sort("datecreated", -1).limit(6)
     return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted))
+
+# Login / Sign in / Sign Up taken from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+        users = mongo.db.users
+        login_user = users.find_one({'name': request.form['username']})
+
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+            
+            return redirect(url_for('login'))
+
+
+@app.route('/signin')
+def signin():
+    if 'username' in session:
+        return 'Already logged in '
+
+    return render_template('login.html')
+
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name': request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(
+                request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert(
+                {'name': request.form['username'], 'password': hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+
+        return 'That username already exists!'
+
+    return render_template('signup.html')
+
+# Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
+
+@app.route('/logout')
+def logout():
+    username = session['username']
+    if 'username' in session:
+        session.pop('username', None)
+        return redirect(url_for('signin'))
 
 
 @app.route('/', methods=["POST"])
@@ -64,10 +117,12 @@ def insert_gear():
     gear.insert_one(new_doc)
     return redirect(url_for('get_gear'))
 
+
 @app.route('/gear_details/<gear_id>')
 def gear_details(gear_id):
     gear_details = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
     return render_template('gear_details.html', gear_details=gear_details)
+
 
 @app.route('/edit_gear/<gear_id>')
 def edit_gear(gear_id):
