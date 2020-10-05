@@ -23,3 +23,4 @@ This site is the third of four Milestone Projects that made up the Full Stack We
 * refresh on css skills https://stackoverflow.com/questions/43119635/fill-div-with-image-without-stretching
 * how to make sticky footer really sticky https://medium.com/@mschenk22/bootstrap-4-footer-at-bottom-not-sticky-dynamic-footer-height-b37ccec837e2ss
 * how to check if something is empty https://www.shellhacks.com/jinja2-check-if-variable-empty-exists-defined-true/
+* sorting https://www.w3schools.com/python/python_mongodb_sort.asp 
