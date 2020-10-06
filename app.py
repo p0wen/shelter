@@ -20,6 +20,7 @@ mongo.db.gear.create_index([
     ('category_name', 'text')
 ])
 
+users = mongo.db.users
 
 @app.route('/')
 def index():
@@ -35,7 +36,6 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-        users = mongo.db.users
         login_user = users.find_one({'name': request.form['username']})
 
         if login_user:
@@ -57,7 +57,6 @@ def signin():
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
-        users = mongo.db.users
         existing_user = users.find_one({'name': request.form['username']})
 
         if existing_user is None:
@@ -98,6 +97,12 @@ def get_gear():
 def add_gear():
     return render_template('add_gear.html',
                            categories=mongo.db.categories.find())
+
+
+@app.route('/myprofile/<user>')
+def myprofile(user):
+    myprofile = users.find_one({"name": user})
+    return render_template('myprofile.html', myprofile=myprofile)
 
 
 @app.route('/insert_gear', methods=['POST'])
