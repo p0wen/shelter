@@ -46,6 +46,11 @@ wrapper {
     box-shadow: 0 0 0 0.01rem rgb(4 63 99);
 }
 
+.btn-seconday-shltr:hover {
+    background-color: #b4b682;
+    border-color: #b4b682;
+}   
+
 .btn-third-shltr {
     background: #F9F7F2;
     border: 2px solid #033F63;
@@ -56,6 +61,11 @@ wrapper {
 
 .btn-third-shltr:focus {
        box-shadow: 0 0 0 0.01rem rgb(4 63 99); 
+}
+
+.btn-third-shltr:hover {
+    background-color: #288666;
+    border-color: #288666;
 }
 
 /** Spacer **/
@@ -78,8 +88,8 @@ wrapper {
 
 .avatar {
   vertical-align: middle;
-  width: 30px;
-  height: 30px;
+  width: 33px;
+  height: 33px;
   border-radius: 50%;
   background: #288666;
   color: #f9f7f2;
