@@ -101,9 +101,10 @@ def add_gear():
 
 @app.route('/myprofile/<user>')
 def myprofile(user):
-    myprofile = users.find_one({"name": user})
-    return render_template('myprofile.html', myprofile=myprofile)
-
+    if session["username"] == user:
+        myprofile = users.find_one({"name": user})
+        return render_template('myprofile.html', myprofile=myprofile)
+    return redirect(url_for('index'))
 
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
