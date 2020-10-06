@@ -6,7 +6,7 @@
 <h2>Featured Gear</h2>
 <div class="h2-spacer"></div>
 
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleCaptions" class="carousel slide mb-2" data-ride="carousel">
   <ol class="carousel-indicators">
     {% for feat in rdm_feat %}
     <li data-target="#carouselExampleCaptions" data-slide-to="{{ loop.cycle('1','2', '3') }}" class="{{ loop.cycle('active','', '') }}"></li>
@@ -39,7 +39,7 @@
 <h2>Recent Gear</h2>
 <div class="h2-spacer"></div>
 
-<div class="container-fluid">
+<div class="container-fluid mb-2">
     <div class="row justify-content-between">
 
 {% for gear in gear_collection if not gear.is_featured %}
