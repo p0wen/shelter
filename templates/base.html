@@ -22,8 +22,10 @@
 		<nav class="navbar sticky-top navbar-expand-md navbar-dark nav-shelter">
 			<a class="navbar-brand"
 				href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/shelter_logo.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Shelter</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+				<button class="navbar-toggler shelter-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical shelter-toggler" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+</svg>
                 </button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
@@ -32,6 +34,9 @@
 						</li>
 						<li class="nav-item {% block nav_gallery %}{% endblock %}">
 							<a class="nav-link" href="{{url_for('get_gear')}}">Gear Gallery</a>
+						</li>
+                        <li class="nav-item {% block nav_about %}{% endblock %}">
+							<a class="nav-link" href="{{url_for('about')}}">About Us</a>
 						</li>
 					</ul>
                 <form method="POST" action="/">
@@ -52,32 +57,35 @@
                 </form>
             </div>
             {% if 'username' in session %}
-                <ul class="nav navbar-nav ml-2">
-                    <li>
-                        <div class="vert-spacer"></div>
+                <ul class="nav navbar-nav">
+                    <li class="d-none d-md-block d-lg-block d-xl-block">
+                        <div class="vert-spacer nav-seperator"></div>
                     </li>
                     <li>
-                        <a href="{{url_for('add_gear' )}}" class="btn btn-sm btn-danger btn-primary-shltr ml-2" tabindex="-1" role="button">
+                        <a href="{{url_for('add_gear' )}}" class="btn btn-sm btn-danger btn-primary-shltr nav-seperator" tabindex="-1" role="button">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                             <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-                        </svg> Gear</a></li>
+                        </svg> Add Gear</a></li>
                     <li>
-                        <a href="{{url_for('myprofile', user=session.username)}}" class="btn btn-sm avatar" tabindex="-1" role="button">{{ session.username[0].capitalize() }}</a>
+                        <a href="{{url_for('myprofile', user=session.username)}}" class="btn btn-sm avatar nav-seperator" tabindex="-1" role="button">{{ session.username[0].capitalize() }}</a>
                     </li>
                 </ul>
             {% else %}
                 <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                     <a href="{{url_for('signup')}}" class="btn btn-sm btn-danger btn-primary-shltr ml-2">
+                    <li class="d-none d-md-block d-lg-block d-xl-block">
+                        <div class="vert-spacer nav-seperator"></div>
+                    </li>
+                    <li>
+                          <a href="{{url_for('signup')}}" class="btn btn-sm btn-danger btn-primary-shltr nav-seperator">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                         </svg>
                     Sign Up!</a>
                     </li>
-                    <li class="nav-item">
-                     <a href="{{url_for('signin')}}" class="btn btn-sm btn-outline-primary btn-third-shltr ml-2">
+                    <li>
+                    <a href="{{url_for('signin')}}" class="btn btn-sm btn-outline-primary btn-third-shltr nav-seperator">
                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
                         <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -85,6 +93,7 @@
                     Log In</a>
                     </li>
                 </ul>
+
             {% endif %}
 		</nav>
 
@@ -97,10 +106,51 @@
         </main>
 
 		<!-- Footer -->
-		<footer class="footer">
+		<footer class="site-footer">
             <div class="container">
-                <span class="text-muted">Place sticky footer content here.</span>
-            </div>
+                <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify"><strong>Shelter</strong> wants to be your one stop place to get the latest updates on outdoor gear and gadgets. We give you the chance to share your latest gear findings with the community and explore the hottest trends in outdoor equipment.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Browse Categories</h6>
+            <ul class="footer-links">
+            {% for cat in categories %}
+              <li><a href="#">{{cat.category_name}}</a></li>
+            {% endfor %}
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="{{ url_for('get_gear') }}">Gallery</a></li>
+            {% if 'username' in session %}
+              <li><a href="{{url_for('add_gear' )}}">Add Gear</a></li>
+              <li><a href="{{url_for('myprofile', user=session.username)}}">Profile</a></li>
+            {% else %}
+              <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+              <li><a href="{{url_for('signin')}}">Log In</a></li>
+            {% endif %} 
+              <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a href="{{url_for('index')}}">Shelter</a>.
+            </p>
+          </div>
+
+
+        </div>
+    </div>
         </footer>
     </wrapper>
 
