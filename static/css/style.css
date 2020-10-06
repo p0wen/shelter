@@ -47,6 +47,23 @@ wrapper {
   margin-left: 0.5rem;
 }
 
+.profile-avatar {
+  vertical-align: middle;
+  line-height: 10rem;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  background: #288666;
+  color: #f9f7f2;
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /** Footer **/
 
 .footer {
