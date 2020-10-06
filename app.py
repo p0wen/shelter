@@ -24,12 +24,13 @@ users = mongo.db.users
 
 @app.route('/')
 def index():
+    categories = mongo.db.categories.find()
     gear = mongo.db.gear.find()
     cursor = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
     gear_sorted = gear.sort("datecreated", -1).limit(6)
-    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted))
+    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted), categories=list(categories))
 
 # Login / Sign in / Sign Up taken from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
 
@@ -172,6 +173,10 @@ def update_gear(gear_id):
 def delete_gear(gear_id):
     mongo.db.gear.remove({'_id': ObjectId(gear_id)})
     return redirect(url_for('get_gear'))
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 if __name__ == '__main__':
