@@ -56,6 +56,7 @@ def signin():
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+    created_on = date.today()
     if request.method == 'POST':
         existing_user = users.find_one({'name': request.form['username']})
 
@@ -63,7 +64,11 @@ def signup():
             hashpass = bcrypt.hashpw(
                 request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert(
-                {'name': request.form['username'], 'password': hashpass})
+                {'name': request.form['username'], 
+                'password': hashpass,
+                'date_registered': created_on.isoformat(),
+                'is_admin': False
+                })
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -103,8 +108,18 @@ def add_gear():
 def myprofile(user):
     if session["username"] == user:
         myprofile = users.find_one({"name": user})
-        return render_template('myprofile.html', myprofile=myprofile)
+        user_postings = mongo.db.gear.find({'author': user})
+        total_posts = user_postings.count()
+        return render_template('myprofile.html', myprofile=myprofile, user_post=list(user_postings), total_posts=total_posts)
     return redirect(url_for('index'))
+
+@app.route('/delete_account/<user_id>')
+def delete_account(user_id):
+    del_acc = users.find_one({"_id":ObjectId(user_id), "name": session["username"]})
+    if del_acc:
+        session.pop('username', None)
+        users.remove({'_id': ObjectId(user_id)})
+        return redirect(url_for('index'))
 
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
@@ -118,7 +133,7 @@ def insert_gear():
         'description': request.form.get('description'),
         'score': request.form.get('score'),
         'img_url': request.form.get('img_url'),
-        'is_featured': False
+        'is_featured': False,
     }
     gear.insert_one(new_doc)
     return redirect(url_for('get_gear'))

@@ -2,8 +2,70 @@
 
 {% block content %}
 
-<div class="container">
- <p>Hi {{ username }} - Welcome to your Profile </p>
+<h2>My Profile</h2>
+<div class="h2-spacer"></div>
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+        <p class="profile-avatar">{{ myprofile.name.capitalize() }}<p>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+            <p class="card-text"><small class="text-muted">Member since: {{ myprofile.date_registered }}</small></p>
+            <h5 class="card-title">Username: {{ myprofile.name }}</h5>
+            <p class="card-text text-bottom">Total posts: {{ total_posts }}</p>
+            <a href="{{url_for('logout', user=myprofile.name)}}" class="btn btn-sm btn-outline-primary ">Logout</a>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteAccount">Delete Profile</a>
+            </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>My Postings</h2>
+<div class="h2-spacer"></div>
+<div class="container-fluid">
+    <div class="row justify-content-between">
+
+{% for gear in user_post %}
+        <div class="card card-custom mb-1">
+			<img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">
+            <div class="card-body text-center">
+                <p class="card-text"><small>#{{gear.category_name}}</small></p>
+                <h5 class="card-title">{{gear.model}} - {{gear.brand}}</h5>
+                <p class="card-text short-description">{{gear.description}}</p>
+                <p class="card-text text-bottom"><small class="text-muted">Rating:<br>{{gear.score}} Stars</small></p>
+            </div>
+            <div class="card-footer card-footer-shelter text-center">
+                <a href="{{url_for('gear_details', gear_id=gear._id)}}" class="btn btn-sm btn-outline-primary ">Details</a>
+                <a href="{{url_for('edit_gear', gear_id=gear._id)}}" class="btn btn-sm btn-outline-secondary ">Edit</a>
+                <a href="{{url_for('delete_gear', gear_id=gear._id)}}" class="btn btn-sm btn-outline-danger ">Delete</a>
+            </div>
+        </div>
+{% endfor %}
+    </div>
+</div>
+
+<!-- Modal for Account deletion -->
+<div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="deleteAccount" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your Profile? This will be permanent and can't be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="{{ url_for('delete_account', user_id=myprofile._id) }}" type="button" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
