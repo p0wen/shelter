@@ -134,6 +134,7 @@ def insert_gear():
         'score': request.form.get('score'),
         'img_url': request.form.get('img_url'),
         'is_featured': False,
+        'author': session['username']
     }
     gear.insert_one(new_doc)
     return redirect(url_for('get_gear'))
