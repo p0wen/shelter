@@ -30,6 +30,10 @@ wrapper {
     color: #043f63; 
 }
 
+.btn-primary-shltr:focus {
+    box-shadow: 0 0 0 0.01rem rgb(4 63 99);
+}
+
 .btn-seconday-shltr {
     background: #F9F7F2;
     border: 2px solid #FEDC97;
@@ -38,15 +42,36 @@ wrapper {
     color: #043f63; 
 }
 
-.shelter-blue {
-  color: #033f63;
+.btn-seconday-shltr:focus {
+    box-shadow: 0 0 0 0.01rem rgb(4 63 99);
 }
 
+.btn-third-shltr {
+    background: #F9F7F2;
+    border: 2px solid #033F63;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    color: #043f63; 
+}
+
+.btn-third-shltr:focus {
+       box-shadow: 0 0 0 0.01rem rgb(4 63 99); 
+}
+
+/** Spacer **/
 .vert-spacer {
     border: 0;
     border-top: 33px solid #B5B682;
     width: 2px;
     height: 33px;
+}
+
+.h2-spacer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 5px solid #288666;
+  width: 100px;
 }
 
 /** Avatar **/
@@ -96,15 +121,7 @@ wrapper {
   padding-left: 15px;
 }
 
-/** Spacer **/
 
-.h2-spacer {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 5px solid #288666;
-  width: 100px;
-}
 
 /** Cards in Gallery .body-shelter **/
 
