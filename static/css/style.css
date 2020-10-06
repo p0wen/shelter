@@ -23,14 +23,30 @@ wrapper {
 
 /* Buttons */
 .btn-primary-shltr {
-  background: #fedc97;
-  border: 2px solid #fedc97;
-  box-sizing: border-box;
-  border-radius: 8px;
+    background: #fedc97;
+    border: 2px solid #fedc97;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    color: #043f63; 
+}
+
+.btn-seconday-shltr {
+    background: #F9F7F2;
+    border: 2px solid #FEDC97;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    color: #043f63; 
 }
 
 .shelter-blue {
   color: #033f63;
+}
+
+.vert-spacer {
+    border: 0;
+    border-top: 33px solid #B5B682;
+    width: 2px;
+    height: 33px;
 }
 
 /** Avatar **/

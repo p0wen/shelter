@@ -52,8 +52,19 @@
                 </form>
             </div>
             {% if 'username' in session %}
-               <ul class="nav navbar-nav">
-                <a href="{{url_for('myprofile', user=session.username)}}" class="btn btn-sm avatar" tabindex="-1" role="button">{{ session.username[0].capitalize() }}</a>
+                <ul class="nav navbar-nav ml-2">
+                    <li>
+                        <div class="vert-spacer"></div>
+                    </li>
+                    <li>
+                        <a href="{{url_for('add_gear' )}}" class="btn btn-sm btn-danger btn-primary-shltr ml-2" tabindex="-1" role="button">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                        </svg> Gear</a></li>
+                    <li>
+                        <a href="{{url_for('myprofile', user=session.username)}}" class="btn btn-sm avatar" tabindex="-1" role="button">{{ session.username[0].capitalize() }}</a>
+                    </li>
                 </ul>
             {% else %}
                 <ul class="nav navbar-nav">
