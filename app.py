@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from datetime import date
 from bson.objectid import ObjectId
 import bcrypt
+import env
 
 app = Flask('__name__')
 
