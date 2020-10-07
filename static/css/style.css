@@ -373,6 +373,20 @@ button.navbar-toggler {
   .card-custom {
     max-width: 14rem;
   }
+    .avatar {
+    margin-left: 0rem;
+    margin-top: 0.5rem;
+  }
+  .nav-seperator {
+    margin-left: 0rem;
+    margin-top: 0.5rem;
+  }
+  .vert-spacer {
+    border: none;
+    border-right: none;
+    width: none;
+    height: none;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {

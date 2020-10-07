@@ -19,7 +19,7 @@
 <body class="body-shelter">
     <wrapper class="d-flex flex-column">
 		<!-- Navbar -->
-		<nav class="navbar sticky-top navbar-expand-md navbar-dark nav-shelter">
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark nav-shelter">
 			<a class="navbar-brand"
 				href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/shelter_logo.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Shelter</a>
 				<button class="navbar-toggler shelter-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
             </div>
             {% if 'username' in session %}
                 <ul class="nav navbar-nav">
-                    <li class="d-none d-md-block d-lg-block d-xl-block">
+                    <li class="d-none d-lg-block d-xl-block">
                         <div class="vert-spacer nav-seperator"></div>
                     </li>
                     <li>
@@ -73,7 +73,7 @@
                 </ul>
             {% else %}
                 <ul class="nav navbar-nav">
-                    <li class="d-none d-md-block d-lg-block d-xl-block">
+                    <li class="d-none d-lg-block d-xl-block">
                         <div class="vert-spacer nav-seperator"></div>
                     </li>
                     <li>
