@@ -8,9 +8,35 @@ Being outside and living an active life is a lot of fun. And even if you don't n
 
 This site is the third of four Milestone Projects that made up the Full Stack Web Development Course at *Code Institute*. The core reuqirements focus on bulding a fullstack site with the use of HTML, CSS, JavaScript, Phython (incl. Flask) and MangoDB. The final result is hosted on Heroku.
 
-# References
+## UX
 
-## Articles & Videos
+## User Stories
+
+## Wireframes
+
+## Color Scheme
+
+## Features
+
+### Exisiting Features
+
+### Features Left to Implement
+
+## Technologies Used
+
+## Testing
+
+## Deployment
+
+## Credits
+
+### Content
+
+### Media
+
+### Acknowledgements
+
+### References 
 * https://medium.com/@rsk.saikrishna/when-to-use-mongodb-rather-than-mysql-d03ceff2e922
 * Manual on how to work with env variable - https://pypi.org/project/environs/
 * how to make data available for more than one interaction - https://stackoverflow.com/questions/57537866/two-for-loops-in-one-html-page-using-jinja-not-working
