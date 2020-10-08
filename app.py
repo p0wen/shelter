@@ -46,6 +46,7 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     """
+    Checks if user is already logged in
     Gets the username from the html form
     Checks if the entered Password is correct
     Give feedback if it fails
@@ -73,7 +74,7 @@ def login():
 def signup():
     """
     Handles the registration of a user
-    Checks if chosen username is already taken 
+    Checks if chosen username is already taken
     Encryptes the password before storing it to the Database
     Sets the username for the session for future identification
     """
@@ -97,13 +98,11 @@ def signup():
             return render_template('signup.html', categories=list(categories.find()))
     return render_template('signup.html', categories=list(categories.find()))
 
-# Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
-
-
 @app.route('/logout')
 def logout():
     """
-
+    Removes the username from the session
+    https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
     """
     username = session['username']
     if 'username' in session:
@@ -113,45 +112,67 @@ def logout():
 
 @app.route('/', methods=["POST"])
 def search():
+    """
+    Search functionality to search through the gear database
+    Model-Name, Brand-Name, Description & Category are indexed for search
+    If nothing is found the template responses accordingly
+    """
     search_this_string = request.form['search']
-    cursor = mongo.db.gear.find({"$text": {"$search": search_this_string}})
+    cursor = gear.find({"$text": {"$search": search_this_string}})
     return render_template('searchresults.html', 
                             result=list(cursor),
-                            categories=list(mongo.db.categories.find()))
+                            categories=list(categories.find()))
 
 
 @app.route('/get_gear')
 def get_gear():
+    """
+    Collects all postings from the database
+    Which are used to render the gear postings gallery
+    """
     return render_template('gallery.html',
-                           gear_collection=mongo.db.gear.find(),
-                           categories=list(mongo.db.categories.find()))
+                           gear_collection=gear.find(),
+                           categories=list(categories.find()))
 
 
 @app.route('/add_gear')
 def add_gear():
+    """
+    Collects the gear categories for the Dropdown Menu
+    """
     return render_template('add_gear.html',
-                           category_sel=mongo.db.categories.find(),
-                           categories=list(mongo.db.categories.find()))
+                           category_sel=categories.find(),
+                           categories=list(categories.find()))
 
 
 @app.route('/myprofile/<user>')
 def myprofile(user):
+    """
+    Collects the profile data of current user
+    user is taken from session.username
+    To render the my profile page
+    """
     if 'username' in session:
         if session["username"] == user:
             myprofile = users.find_one({"name": user})
-            user_postings = mongo.db.gear.find({'author': user})
+            user_postings = gear.find({'author': user})
             total_posts = user_postings.count()
             return render_template('myprofile.html',
                                    myprofile=myprofile,
                                    user_post=list(user_postings),
                                    total_posts=total_posts,
-                                   categories=list(mongo.db.categories.find()))
+                                   categories=list(categories.find()))
             return redirect(url_for('index'))
     return redirect(url_for('index'))
 
 
 @app.route('/delete_account/<user_id>')
 def delete_account(user_id):
+    """
+    User can delete their account
+    Only the account but not the posts are removed
+    Accounts can only be removed by the current user
+    """
     if 'username' in session:
         if session["username"] == users.find_one({"_id": ObjectId(user_id)})['name']:
             del_acc = users.find_one(
@@ -166,7 +187,10 @@ def delete_account(user_id):
 
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
-    gear = mongo.db.gear
+    """
+    Insertion of new document to gear collection
+    Input taken from form, session and date function
+    """
     created_on = date.today()
     new_doc = {
         "datecreated": created_on.isoformat(),
@@ -185,20 +209,33 @@ def insert_gear():
 
 @app.route('/gear_details/<gear_id>')
 def gear_details(gear_id):
-    gear_details = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
-    return render_template('gear_details.html', gear_details=gear_details, categories=list(mongo.db.categories.find()))
+    """
+    Collects necessary information from gear collection
+    to render the gear details page
+    gear_id is taken from gear._id
+    """
+    gear_details = gear.find_one({"_id": ObjectId(gear_id)})
+    return render_template('gear_details.html', gear_details=gear_details, categories=list(categories.find()))
 
 
 @app.route('/edit_gear/<gear_id>')
 def edit_gear(gear_id):
-    the_gear = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
-    all_categories = mongo.db.categories.find()
-    return render_template('edit_gear.html', gear=the_gear, category_sel=all_categories, categories=list(mongo.db.categories.find()))
+    """
+    Collects necessary information from gear collection
+    to render and inject the edit page
+    gear_id is taken from gear._id
+    """
+    the_gear = gear.find_one({"_id": ObjectId(gear_id)})
+    all_categories = categories.find()
+    return render_template('edit_gear.html', gear=the_gear, category_sel=all_categories, categories=list(categories.find()))
 
 
 @app.route('/update_gear/<gear_id>', methods=["POST"])
 def update_gear(gear_id):
-    gear = mongo.db.gear
+    """
+    Writes changes from edit page into the chose document
+    from the gear collection
+    """
     gear.update({'_id': ObjectId(gear_id)},
                 {
         'model': request.form.get('model'),
