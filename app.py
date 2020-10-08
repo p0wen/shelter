@@ -270,15 +270,23 @@ def update_gear(gear_id):
     """
     Writes changes from edit page into the chose document
     from the gear collection
+    Keeps basic data alive
     """
+    date_created = gear.find_one({'_id': ObjectId(gear_id)})['datecreated']
+    is_featured = gear.find_one({'_id': ObjectId(gear_id)})['is_featured']
+    author = gear.find_one({'_id': ObjectId(gear_id)})['author']
     gear.update({'_id': ObjectId(gear_id)},
                 {
+        "datecreated": date_created,
         'model': request.form.get('model'),
         'brand': request.form.get('brand'),
         'category_name': request.form.get('category_name'),
         'description': request.form.get('description'),
         'score': request.form.get('score'),
-        'img_url': request.form.get('img_url')
+        'img_url': request.form.get('img_url'),
+        'is_featured': is_featured,
+        'author': author
+
     })
     return redirect(url_for('get_gear'))
 
