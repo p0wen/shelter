@@ -14,6 +14,7 @@
       name="model"
       placeholder="e.g. Better-Sweater"
       value="{{gear.model}}"
+      required
     />
   </div>
   <div class="form-group">
@@ -25,17 +26,18 @@
       name="brand"
       placeholder="e.g. Patagonia"
       value="{{gear.brand}}"
+      required
     />
   </div>
   <div class="form-group">
     <label for="categoryInput">Category</label>
-    <select class="form-control" id="category_name" name="category_name">
+    <select class="form-control" id="category_name" name="category_name" required> 
       <option selected disabled value="">Choose your Category</option>
       {% for cat in category_sel %}
         {% if cat.category_name == gear.category_name %}
             <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
         {% else %}
-            <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
+            <option value="{{cat.category_name}}">{{cat.category_name}}</option>
         {% endif %}
       {% endfor %}
     </select>
@@ -47,16 +49,20 @@
       id="description"
       name="description"
       rows="3"
+      required
     >{{gear.description}}</textarea>
   </div>
   <div class="form-group">
-    <label for="ratingInput">Gear Rating (1 to 5*)</label>
+    <label for="ratingInput">Gear Rating - 1 (worst) to 5 (best) Stars</label>
     <input
       type="number"
       class="form-control"
       id="score"
       name="score"
       value="{{gear.score}}"
+      min="1"
+      max="5"
+      required
     />
   </div>
   <div class="form-group">
@@ -67,6 +73,7 @@
       id="img_url"
       name="img_url"
       value="{{gear.img_url}}"
+      required
     />
   </div>
   <div class="form-group">

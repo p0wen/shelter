@@ -12,6 +12,7 @@
       id="model"
       name="model"
       placeholder="e.g. Better-Sweater"
+      required
     />
   </div>
   <div class="form-group">
@@ -22,11 +23,12 @@
       id="brand"
       name="brand"
       placeholder="e.g. Patagonia"
+      required
     />
   </div>
   <div class="form-group">
     <label for="categoryInput">Category</label>
-    <select class="form-control" id="category_name" name="category_name">
+    <select class="form-control" id="category_name" name="category_name" required>
       <option selected disabled value="">Choose your Category</option>
       {% for cat in category_sel %}
         <option value="{{cat.category_name}}">{{cat.category_name}}</option>
@@ -41,16 +43,20 @@
       name="description"
       rows="3"
       placeholder="This is a comfortable and versatile fleece jacket"
+      required
     ></textarea>
   </div>
   <div class="form-group">
-    <label for="ratingInput">Gear Rating (1 to 5*)</label>
+    <label for="ratingInput">Gear Rating - 1 (worst) to 5 (best) Stars</label>
     <input
       type="number"
+      min="1"
+      max="5"
       class="form-control"
       id="score"
       name="score"
       placeholder="e.g. 4 (for 4 stars)"
+      required
     />
   </div>
   <div class="form-group">
@@ -61,6 +67,7 @@
       id="img_url"
       name="img_url"
       placeholder="e.g. https://patagonia.com/bettersweater.jpg"
+      required
     />
   </div>
   <div class="form-group">
