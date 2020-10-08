@@ -81,9 +81,8 @@ def signup():
             return redirect(url_for('index'))
         else:
             flash("That username already exists! Try another one")
-            return redirect(url_for('signup'))
-
-    return redirect(url_for('signup'))
+            return render_template('signup.html', categories=list(mongo.db.categories.find()))
+    return render_template('signup.html', categories=list(mongo.db.categories.find()))
 
 # Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
 
