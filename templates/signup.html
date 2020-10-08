@@ -1,11 +1,22 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <!-- Do something with the message -->
+            {{ message }}
+
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 
 <h2>Sign up</h2>
 <div class="h2-spacer"></div>
 
-<div>
+<div class="container">
+    <div class="row">
+        <div>
             <form action="{{ url_for('signup') }}" method=POST>
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
@@ -21,7 +32,13 @@
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                 </svg>
                 Sign up!</button>
-    </form>
+            </form>
+            <br>
+            <div><small class="text-muted">
+                Already have an account? <a href="{{ url_for('login') }}">Login in here</a>.</small>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
