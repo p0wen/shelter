@@ -11,7 +11,7 @@ app = Flask('__name__')
 
 app.config["MONGO_DBNAME"] = os.environ.get('MONGO_DBNAME')
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
-
+app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
 
 # Global Variables
 mongo = PyMongo(app)
@@ -24,6 +24,7 @@ mongo.db.gear.create_index([
 ])
 
 users = mongo.db.users
+
 
 @app.route('/')
 def index():
@@ -67,7 +68,7 @@ def signup():
         if existing_user is None:
             hashpass = bcrypt.hashpw(
                 request.form['pass'].encode('utf-8'), bcrypt.gensalt())
-            users.insert(
+            users.insert_one(
                 {'name': request.form['username'], 
                 'password': hashpass,
                 'date_registered': created_on.isoformat(),
@@ -188,7 +189,6 @@ def about():
 
 
 if __name__ == '__main__':
-    app.config['SECRET_KEY']= os.environ.get('SECRET_KEY')
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
