@@ -85,7 +85,7 @@
                     Sign Up!</a>
                     </li>
                     <li>
-                    <a href="{{url_for('signin')}}" class="btn btn-sm btn-outline-primary btn-third-shltr nav-seperator">
+                    <a href="{{url_for('login')}}" class="btn btn-sm btn-outline-primary btn-third-shltr nav-seperator">
                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
                         <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -132,7 +132,7 @@
               <li><a href="{{url_for('myprofile', user=session.username)}}">Profile</a></li>
             {% else %}
               <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-              <li><a href="{{url_for('signin')}}">Log In</a></li>
+              <li><a href="{{url_for('login')}}">Log In</a></li>
             {% endif %} 
               <li><a href="{{ url_for('about') }}">About Us</a></li>
             </ul>
@@ -151,39 +151,8 @@
 
         </div>
     </div>
-        </footer>
-    </wrapper>
-
-    <!-- Log in -->
-
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form action="{{ url_for('signin') }}" method=POST>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="usersname" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="password">
-                </div>
-
-        </div>
-        <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-        </div>
-        </div>
-    </div>
-    </div>
+    </footer>
+</wrapper>
 
 <div class="text-center">
 

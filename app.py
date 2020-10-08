@@ -9,61 +9,74 @@ if os.path.exists("env.py"):
 
 app = Flask('__name__')
 
+""" Configuration of app from heroku .env file """
+
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
-# Global Variables
+""" Global Variables """
 mongo = PyMongo(app)
+users = mongo.db.users
+gear = mongo.db.gear
+categories = mongo.db.categories
 
-mongo.db.gear.create_index([
+""" Indexing of Database to allow search functionality """
+gear.create_index([
     ('model', 'text'),
     ('brand', 'text'),
     ('description', 'text'),
     ('category_name', 'text')
 ])
 
-users = mongo.db.users
-
-
 @app.route('/')
 def index():
-    gear = mongo.db.gear.find()
-    cursor = mongo.db.gear.aggregate(
+    """
+    Collects featured posts,
+    Collects the most recent gear postings
+    Return collections for rendering the landing page
+    """
+    get_featured_posts = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
-    gear_sorted = gear.sort("datecreated", -1).limit(6)
-    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted), categories=list(mongo.db.categories.find()))
-
-# Login / Sign in / Sign Up taken from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
+    gear_sorted = gear.find().sort("datecreated", -1).limit(6)
+    return render_template("index.html", rdm_feat=list(get_featured_posts), gear_collection=list(gear_sorted), categories=list(categories.find()))
 
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    login_user = users.find_one({'name': request.form['username']})
-
-    if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-        else:
-            flash("Wrong password")
-            return redirect(url_for('signin'))
-
-    flash("User does not exist")
-    return redirect(url_for('signin'))
-
-
-@app.route('/signin')
-def signin():
+    """
+    Gets the username from the html form
+    Checks if the entered Password is correct
+    Give feedback if it fails
+    Otherwise user will be forwarded to index page
+    """
     if 'username' in session:
         return redirect(url_for('index'))
 
-    return render_template('login.html', categories=list(mongo.db.categories.find()))
+    if request.method == 'POST':    
+        login_user = users.find_one({'name': request.form['username']})
 
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+            else:
+                flash("Wrong password")
+                return redirect(url_for('login'))
+
+        flash("User does not exist")
+        return redirect(url_for('login'))
+    return render_template('login.html', categories=list(categories.find()))
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+    """
+    Handles the registration of a user
+    Checks if chosen username is already taken 
+    Encryptes the password before storing it to the Database
+    Sets the username for the session for future identification
+    """
     created_on = date.today()
     if request.method == 'POST':
         existing_user = users.find_one({'name': request.form['username']})
@@ -81,8 +94,8 @@ def signup():
             return redirect(url_for('index'))
         else:
             flash("That username already exists! Try another one")
-            return render_template('signup.html', categories=list(mongo.db.categories.find()))
-    return render_template('signup.html', categories=list(mongo.db.categories.find()))
+            return render_template('signup.html', categories=list(categories.find()))
+    return render_template('signup.html', categories=list(categories.find()))
 
 # Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
 
@@ -95,7 +108,7 @@ def logout():
     username = session['username']
     if 'username' in session:
         session.pop('username', None)
-        return redirect(url_for('signin'))
+        return redirect(url_for('login'))
 
 
 @app.route('/', methods=["POST"])
