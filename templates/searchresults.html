@@ -31,7 +31,14 @@
     </div>
     </div>
 {% else %}
-<div>Nothing Found</div>
-{% endif %}
+    <div><p>Too bad... We couldn't find what you were looking for...</p>
+        {% if 'username' in session %}
+            <p>Do you want to create a gear report? <a href="{{url_for('add_gear' )}}">Add Gear now!</a></p>
+            {% else %}
+            <p>Do you want to be part of our community? <a href="{{ url_for('signup') }}">Sign up here!</a> </p>
+            {% endif %}
+    </div>
+        
+    {% endif %}
 
 {% endblock %}
