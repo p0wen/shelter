@@ -88,7 +88,7 @@ This site is the third of four Milestone Projects that made up the Full Stack We
 - Delete Categories
 - Upload picture
 - Add Gear to "My List" to create own "Shelter" 
-- Use Flask-Login for session and user management (especially password recovery)
+- Use Flask-Login for session and user management (increase security & handle password recovery)
 - File Upload for pictures to avoid external dependencies and copywrite
 - Autocomplete for Search-Field
 
