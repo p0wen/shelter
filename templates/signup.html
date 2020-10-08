@@ -20,11 +20,11 @@
             <form action="{{ url_for('signup') }}" method="POST">
                 <div class="form-group">
                     <label for="InputUsername">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" aria-describedby="username" autocomplete="username">
+                    <input type="text" class="form-control" id="username" name="username" aria-describedby="username" autocomplete="username" required>
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Password</label>
-                    <input type="password" class="form-control" id="pass" name="pass" autocomplete="current-password">
+                    <input type="password" class="form-control" id="pass" name="pass" autocomplete="current-password" required>
                 </div>
                 <button type="submit" class="btn btn-danger btn-sm btn-primary-shltr">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
