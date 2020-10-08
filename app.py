@@ -29,6 +29,12 @@ gear.create_index([
     ('category_name', 'text')
 ])
 
+
+"""
+Entry Point & general search functionality
+"""
+
+
 @app.route('/')
 def index():
     """
@@ -43,32 +49,24 @@ def index():
     return render_template("index.html", rdm_feat=list(get_featured_posts), gear_collection=list(gear_sorted), categories=list(categories.find()))
 
 
-@app.route('/login', methods=['POST', 'GET'])
-def login():
+@app.route('/', methods=["POST"])
+def search():
     """
-    Checks if user is already logged in
-    Gets the username from the html form
-    Checks if the entered Password is correct
-    Give feedback if it fails
-    Otherwise user will be forwarded to index page
+    Search functionality to search through the gear database
+    Model-Name, Brand-Name, Description & Category are indexed for search
+    If nothing is found the template responses accordingly
     """
-    if 'username' in session:
-        return redirect(url_for('index'))
+    search_this_string = request.form['search']
+    cursor = gear.find({"$text": {"$search": search_this_string}})
+    return render_template('searchresults.html',
+                           result=list(cursor),
+                           categories=list(categories.find()))
 
-    if request.method == 'POST':    
-        login_user = users.find_one({'name': request.form['username']})
 
-        if login_user:
-            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
-                session['username'] = request.form['username']
-                return redirect(url_for('index'))
-            else:
-                flash("Wrong password")
-                return redirect(url_for('login'))
+"""
+User Management & Session handling
+"""
 
-        flash("User does not exist")
-        return redirect(url_for('login'))
-    return render_template('login.html', categories=list(categories.find()))
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
@@ -98,6 +96,35 @@ def signup():
             return render_template('signup.html', categories=list(categories.find()))
     return render_template('signup.html', categories=list(categories.find()))
 
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    """
+    Checks if user is already logged in
+    Gets the username from the html form
+    Checks if the entered Password is correct
+    Give feedback if it fails
+    Otherwise user will be forwarded to index page
+    """
+    if 'username' in session:
+        return redirect(url_for('index'))
+
+    if request.method == 'POST':
+        login_user = users.find_one({'name': request.form['username']})
+
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+            else:
+                flash("Wrong password")
+                return redirect(url_for('login'))
+
+        flash("User does not exist")
+        return redirect(url_for('login'))
+    return render_template('login.html', categories=list(categories.find()))
+
+
 @app.route('/logout')
 def logout():
     """
@@ -108,41 +135,6 @@ def logout():
     if 'username' in session:
         session.pop('username', None)
         return redirect(url_for('login'))
-
-
-@app.route('/', methods=["POST"])
-def search():
-    """
-    Search functionality to search through the gear database
-    Model-Name, Brand-Name, Description & Category are indexed for search
-    If nothing is found the template responses accordingly
-    """
-    search_this_string = request.form['search']
-    cursor = gear.find({"$text": {"$search": search_this_string}})
-    return render_template('searchresults.html', 
-                            result=list(cursor),
-                            categories=list(categories.find()))
-
-
-@app.route('/get_gear')
-def get_gear():
-    """
-    Collects all postings from the database
-    Which are used to render the gear postings gallery
-    """
-    return render_template('gallery.html',
-                           gear_collection=gear.find(),
-                           categories=list(categories.find()))
-
-
-@app.route('/add_gear')
-def add_gear():
-    """
-    Collects the gear categories for the Dropdown Menu
-    """
-    return render_template('add_gear.html',
-                           category_sel=categories.find(),
-                           categories=list(categories.find()))
 
 
 @app.route('/myprofile/<user>')
@@ -185,6 +177,48 @@ def delete_account(user_id):
     return redirect(url_for('index'))
 
 
+""" 
+Display Gear and Gear Details
+"""
+
+
+@app.route('/get_gear')
+def get_gear():
+    """
+    Collects all postings from the database
+    Which are used to render the gear postings gallery
+    """
+    return render_template('gallery.html',
+                           gear_collection=gear.find(),
+                           categories=list(categories.find()))
+
+
+@app.route('/gear_details/<gear_id>')
+def gear_details(gear_id):
+    """
+    Collects necessary information from gear collection
+    to render the gear details page
+    gear_id is taken from gear._id
+    """
+    gear_details = gear.find_one({"_id": ObjectId(gear_id)})
+    return render_template('gear_details.html', gear_details=gear_details, categories=list(categories.find()))
+
+
+"""  
+Create new or work with exisitng Gear Postings 
+"""
+
+
+@app.route('/add_gear')
+def add_gear():
+    """
+    Collects the gear categories for the Dropdown Menu
+    """
+    return render_template('add_gear.html',
+                           category_sel=categories.find(),
+                           categories=list(categories.find()))
+
+
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
     """
@@ -205,17 +239,6 @@ def insert_gear():
     }
     gear.insert_one(new_doc)
     return redirect(url_for('get_gear'))
-
-
-@app.route('/gear_details/<gear_id>')
-def gear_details(gear_id):
-    """
-    Collects necessary information from gear collection
-    to render the gear details page
-    gear_id is taken from gear._id
-    """
-    gear_details = gear.find_one({"_id": ObjectId(gear_id)})
-    return render_template('gear_details.html', gear_details=gear_details, categories=list(categories.find()))
 
 
 @app.route('/edit_gear/<gear_id>')
@@ -250,12 +273,19 @@ def update_gear(gear_id):
 
 @app.route('/delete_gear/<gear_id>')
 def delete_gear(gear_id):
-    mongo.db.gear.remove({'_id': ObjectId(gear_id)})
+    """
+    Removes specific document from collection by
+    _id
+    """
+    gear.remove({'_id': ObjectId(gear_id)})
     return redirect(url_for('get_gear'))
 
 
 @app.route('/about')
 def about():
+    """
+    Render about page
+    """
     return render_template('about.html', categories=list(mongo.db.categories.find()))
 
 
