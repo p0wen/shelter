@@ -28,13 +28,12 @@ users = mongo.db.users
 
 @app.route('/')
 def index():
-    categories = mongo.db.categories.find()
     gear = mongo.db.gear.find()
     cursor = mongo.db.gear.aggregate(
         [{'$match': {'is_featured': True}},
          {'$sample': {'size': 3}}])
     gear_sorted = gear.sort("datecreated", -1).limit(6)
-    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted), categories=list(categories))
+    return render_template("index.html", rdm_feat=list(cursor), gear_collection=list(gear_sorted), categories=list(mongo.db.categories.find()))
 
 # Login / Sign in / Sign Up taken from this tutorial https://www.youtube.com/watch?v=vVx1737auSE
 
@@ -60,7 +59,7 @@ def signin():
     if 'username' in session:
         return redirect(url_for('index'))
 
-    return render_template('login.html', )
+    return render_template('login.html', categories=list(mongo.db.categories.find()))
 
 
 @app.route('/signup', methods=['POST', 'GET'])
@@ -82,9 +81,9 @@ def signup():
             return redirect(url_for('index'))
         else:
             flash("That username already exists! Try another one")
-            return render_template('signup.html')
+            return redirect(url_for('signup'))
 
-    return render_template('signup.html')
+    return redirect(url_for('signup'))
 
 # Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
 
@@ -105,19 +104,22 @@ def search():
     search_this_string = request.form['search']
     cursor = mongo.db.gear.find({"$text": {"$search": search_this_string}})
     return render_template('searchresults.html', 
-                            result=list(cursor))
+                            result=list(cursor),
+                            categories=list(mongo.db.categories.find()))
 
 
 @app.route('/get_gear')
 def get_gear():
     return render_template('gallery.html',
-                           gear_collection=mongo.db.gear.find())
+                           gear_collection=mongo.db.gear.find(),
+                           categories=list(mongo.db.categories.find()))
 
 
 @app.route('/add_gear')
 def add_gear():
     return render_template('add_gear.html',
-                           categories=mongo.db.categories.find())
+                           category_sel=mongo.db.categories.find(),
+                           categories=list(mongo.db.categories.find()))
 
 
 @app.route('/myprofile/<user>')
@@ -130,8 +132,9 @@ def myprofile(user):
             return render_template('myprofile.html',
                                    myprofile=myprofile,
                                    user_post=list(user_postings),
-                                   total_posts=total_posts)
-        return redirect(url_for('index'))
+                                   total_posts=total_posts,
+                                   categories=list(mongo.db.categories.find()))
+            return redirect(url_for('index'))
     return redirect(url_for('index'))
 
 
@@ -171,14 +174,14 @@ def insert_gear():
 @app.route('/gear_details/<gear_id>')
 def gear_details(gear_id):
     gear_details = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
-    return render_template('gear_details.html', gear_details=gear_details)
+    return render_template('gear_details.html', gear_details=gear_details, categories=list(mongo.db.categories.find()))
 
 
 @app.route('/edit_gear/<gear_id>')
 def edit_gear(gear_id):
     the_gear = mongo.db.gear.find_one({"_id": ObjectId(gear_id)})
     all_categories = mongo.db.categories.find()
-    return render_template('edit_gear.html', gear=the_gear, categories=all_categories)
+    return render_template('edit_gear.html', gear=the_gear, category_sel=all_categories, categories=list(mongo.db.categories.find()))
 
 
 @app.route('/update_gear/<gear_id>', methods=["POST"])
@@ -204,7 +207,7 @@ def delete_gear(gear_id):
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', categories=list(mongo.db.categories.find()))
 
 
 if __name__ == '__main__':
