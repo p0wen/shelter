@@ -203,9 +203,21 @@ def gear_details(gear_id):
     gear_details = gear.find_one({"_id": ObjectId(gear_id)})
     return render_template('gear_details.html', gear_details=gear_details, categories=list(categories.find()))
 
+@app.route('/browsecategory/<category>/')
+def browsecategory(category):
+    """
+    Get all gear posting 
+    which belong to a certain category
+    To render a category specific
+    Overview of postings
+    """
+    h2_title = category
+    category_posts = gear.find(({"category_name": category}))
+    return render_template('browsecategory.html', h2_title=h2_title, post_by_category=list(category_posts), categories=list(categories.find()))
 
-"""  
-Create new or work with exisitng Gear Postings 
+
+"""
+Create new or work with exisitng Gear Postings
 """
 
 
