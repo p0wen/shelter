@@ -118,7 +118,7 @@
             <h6>Browse Categories</h6>
             <ul class="footer-links">
             {% for cat in categories %}
-              <li><a href="#">{{cat.category_name}}</a></li>
+              <li><a href="{{url_for('browsecategory', category=cat.category_name)}}">{{cat.category_name}}</a></li>
             {% endfor %}
             </ul>
           </div>
