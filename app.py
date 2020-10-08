@@ -11,7 +11,7 @@ app = Flask('__name__')
 
 app.config["MONGO_DBNAME"] = os.environ.get('MONGO_DBNAME')
 app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
-app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
+app.secret_key = os.environ.get('SECRET_KEY')
 
 # Global Variables
 mongo = PyMongo(app)
@@ -46,7 +46,7 @@ def login():
             if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
-            
+
             return redirect(url_for('login'))
 
 
@@ -82,8 +82,13 @@ def signup():
 
 # Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
 
+
+
 @app.route('/logout')
 def logout():
+    """
+
+    """
     username = session['username']
     if 'username' in session:
         session.pop('username', None)
