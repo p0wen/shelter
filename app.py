@@ -47,16 +47,20 @@ def login():
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
             return redirect(url_for('index'))
+        else:
+            flash("Wrong password")
+            return redirect(url_for('signin'))
 
-        return redirect(url_for('login'))
+    flash("User does not exist")
+    return redirect(url_for('signin'))
 
 
 @app.route('/signin')
 def signin():
     if 'username' in session:
-        return 'Already logged in '
+        return redirect(url_for('index'))
 
-    return render_template('login.html')
+    return render_template('login.html', )
 
 
 @app.route('/signup', methods=['POST', 'GET'])
@@ -76,8 +80,9 @@ def signup():
                  })
             session['username'] = request.form['username']
             return redirect(url_for('index'))
-
-        return 'That username already exists!'
+        else:
+            flash("That username already exists! Try another one")
+            return render_template('signup.html')
 
     return render_template('signup.html')
 
@@ -99,12 +104,14 @@ def logout():
 def search():
     search_this_string = request.form['search']
     cursor = mongo.db.gear.find({"$text": {"$search": search_this_string}})
-    return render_template("searchresults.html", result=list(cursor))
+    return render_template('searchresults.html', 
+                            result=list(cursor))
 
 
 @app.route('/get_gear')
 def get_gear():
-    return render_template("gallery.html", gear_collection=mongo.db.gear.find())
+    return render_template('gallery.html',
+                           gear_collection=mongo.db.gear.find())
 
 
 @app.route('/add_gear')
@@ -115,22 +122,31 @@ def add_gear():
 
 @app.route('/myprofile/<user>')
 def myprofile(user):
-    if session["username"] == user:
-        myprofile = users.find_one({"name": user})
-        user_postings = mongo.db.gear.find({'author': user})
-        total_posts = user_postings.count()
-        return render_template('myprofile.html', myprofile=myprofile, user_post=list(user_postings), total_posts=total_posts)
+    if 'username' in session:
+        if session["username"] == user:
+            myprofile = users.find_one({"name": user})
+            user_postings = mongo.db.gear.find({'author': user})
+            total_posts = user_postings.count()
+            return render_template('myprofile.html',
+                                   myprofile=myprofile,
+                                   user_post=list(user_postings),
+                                   total_posts=total_posts)
+        return redirect(url_for('index'))
     return redirect(url_for('index'))
 
 
 @app.route('/delete_account/<user_id>')
 def delete_account(user_id):
-    del_acc = users.find_one(
-        {"_id": ObjectId(user_id), "name": session["username"]})
-    if del_acc:
-        session.pop('username', None)
-        users.remove({'_id': ObjectId(user_id)})
+    if 'username' in session:
+        if session["username"] == users.find_one({"_id": ObjectId(user_id)})['name']:
+            del_acc = users.find_one(
+                {"_id": ObjectId(user_id), "name": session["username"]})
+            if del_acc:
+                session.pop('username', None)
+                users.remove({'_id': ObjectId(user_id)})
+                return redirect(url_for('index'))
         return redirect(url_for('index'))
+    return redirect(url_for('index'))
 
 
 @app.route('/insert_gear', methods=['POST'])
@@ -179,14 +195,17 @@ def update_gear(gear_id):
     })
     return redirect(url_for('get_gear'))
 
+
 @app.route('/delete_gear/<gear_id>')
 def delete_gear(gear_id):
     mongo.db.gear.remove({'_id': ObjectId(gear_id)})
     return redirect(url_for('get_gear'))
 
+
 @app.route('/about')
 def about():
     return render_template('about.html')
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
