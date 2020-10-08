@@ -111,21 +111,143 @@ This site is the third of four Milestone Projects that made up the Full Stack We
 
 ### Test Cycle
 #### Sign up
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Sign Up button
+4. Choose username
+5. Choose password
+6. Click Sign Up button
+7. User should be logged in
+
 #### Log in
+Happy Path:
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter username
+5. Enter password
+6. Click log in button
+7. User should be logged in
+
+Wrong Password:
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter username
+5. Enter wrong password
+6. Click log in button
+7. You should be informed that the password is wrong
+
+Username does not exist:
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter non-existing username
+5. Enter non-existing password
+6. Click log in button
+7. You should be informed that the user does not exist
+
 #### Search
+Happy Path
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Type text into Search field and hit enter or press button
+4. New Page with Search-Results should open
+5a. If no Results exist --> Inform User about it
+5b. If Result exist --> You should see Gear Cards
+
 #### Create posting
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter non-existing username
+5. Enter non-existing password
+6. Click log in button
+7. Click Add Gear Button on top right corner
+8. New Site with Form should open
+9. Fill out Form 
+10. Submit posting
+11. Your post should be visible in your profile
+
 #### Edit posting
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter non-existing username
+5. Enter non-existing password
+6. Click log in button
+7. Click on your Avatar on top right corner
+11. Choose post from your Profile via the Edit button
+12. Make change to the posting and hit stackoverflow
+13. Changes should be visible in your profile
+
 #### Delete posting
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter non-existing username
+5. Enter non-existing password
+6. Click log in button
+7. Click on your Avatar on top right corner
+11. Choose post from your Profile via the Delete button
+12. Confirm your choice to delete
+13. Post should be gone from overview
+
 #### Enter details
+For Featured Items
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Click on Carousel
+
+For Recent Post
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Scroll Down to Recent Post
+4. Click Details button
+5. You should see the details
+
+For Gallery
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Navigate to Gallery
+4. Click Details button
+5. You should see the details
+
 #### Browse categories
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Scroll Down to Footer
+4. Click on Category
+5. New site should open with the category as header and related postings
+
 #### Navbar logged in
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter username
+5. Enter password
+6. Click log in button
+7. Sign Up & Login Button should be replaced with Add Gear & Avatar Button
+
 #### Navbar logged out
-#### Footer links
-#### Footer text
-#### About Page
-#### Log out
-#### Log in
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter username
+5. Enter password
+6. Click on Avatar Button
+7. Press Logout Button
+8. Sign Up & Login Button should be visible instead of Add Gear & Avatar Button
+
 #### Delete Account
+1. Open Browser
+2. Visit https://gearshelter.herokuapp.com/
+3. Press Login button
+4. Enter username
+5. Enter password
+6. Click on Avatar Button
+7. Click on Delete Account
+8. You should be logged out and should not be able to login again with the credentials you used before
 
 ### Validator Checks, Audits & Tools
 
