@@ -9,9 +9,9 @@ if os.path.exists("env.py"):
 
 app = Flask('__name__')
 
-app.config["MONGO_DBNAME"] = os.environ.get('MONGO_DBNAME')
-app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
-app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY')
+app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 # Global Variables
 mongo = PyMongo(app)
@@ -41,14 +41,14 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-        login_user = users.find_one({'name': request.form['username']})
+    login_user = users.find_one({'name': request.form['username']})
 
-        if login_user:
-            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
-                session['username'] = request.form['username']
-                return redirect(url_for('index'))
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
 
-            return redirect(url_for('login'))
+        return redirect(url_for('login'))
 
 
 @app.route('/signin')
@@ -69,11 +69,11 @@ def signup():
             hashpass = bcrypt.hashpw(
                 request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert_one(
-                {'name': request.form['username'], 
-                'password': hashpass,
-                'date_registered': created_on.isoformat(),
-                'is_admin': False
-                })
+                {'name': request.form['username'],
+                 'password': hashpass,
+                 'date_registered': created_on.isoformat(),
+                 'is_admin': False
+                 })
             session['username'] = request.form['username']
             return redirect(url_for('index'))
 
@@ -82,7 +82,6 @@ def signup():
     return render_template('signup.html')
 
 # Function to logout existing users https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
-
 
 
 @app.route('/logout')
@@ -123,13 +122,16 @@ def myprofile(user):
         return render_template('myprofile.html', myprofile=myprofile, user_post=list(user_postings), total_posts=total_posts)
     return redirect(url_for('index'))
 
+
 @app.route('/delete_account/<user_id>')
 def delete_account(user_id):
-    del_acc = users.find_one({"_id":ObjectId(user_id), "name": session["username"]})
+    del_acc = users.find_one(
+        {"_id": ObjectId(user_id), "name": session["username"]})
     if del_acc:
         session.pop('username', None)
         users.remove({'_id': ObjectId(user_id)})
         return redirect(url_for('index'))
+
 
 @app.route('/insert_gear', methods=['POST'])
 def insert_gear():
@@ -177,7 +179,6 @@ def update_gear(gear_id):
     })
     return redirect(url_for('get_gear'))
 
-
 @app.route('/delete_gear/<gear_id>')
 def delete_gear(gear_id):
     mongo.db.gear.remove({'_id': ObjectId(gear_id)})
@@ -186,7 +187,6 @@ def delete_gear(gear_id):
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
