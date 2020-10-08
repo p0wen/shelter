@@ -188,8 +188,7 @@ def about():
 
 
 if __name__ == '__main__':
-    app.run(
-            app.secret_key = os.environ.get('SECRET_KEY'),
-            host=os.environ.get('IP'),
+    app.secret_key = os.environ.get('SECRET_KEY'),
+    app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
