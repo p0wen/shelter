@@ -28,7 +28,7 @@
     <label for="categoryInput">Category</label>
     <select class="form-control" id="category_name" name="category_name">
       <option selected disabled value="">Choose your Category</option>
-      {% for cat in categories %}
+      {% for cat in category_sel %}
         <option value="{{cat.category_name}}">{{cat.category_name}}</option>
       {% endfor %}
     </select>
