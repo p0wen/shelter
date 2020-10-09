@@ -1,6 +1,6 @@
-# Work in progress!
-
 # Milestone Project 3 with *Code Institute*
+
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/shelter_demo.gif?raw=true "Shelter Components")](https://gearshelter.herokuapp.com/ "Shelter - Your Outdoor Gear Community")
 
 *Shelter* allows users to browse and report the newest and most necessary outdoor gear on the market.
 
@@ -29,23 +29,51 @@ The following user stories were defined to outline the needed feature set.
 
 ## Wireframes
 
-- build with figma
-
+The wireframes were created in Figma. Figma is a cloud based desing tool which allows you to rapidly create prototypes, wireframes and layouts (www.figma.com)
 
 ### Planned Layout
 
-- Insert Screenshot
+#### Components
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png?raw=true "Shelter Components")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png "Figma - Shelter Components")
+
+#### Mobil View
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png "Figma - Shelter Mobil View")
+
+#### Medium View
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png "Figma - Shelter Medium View")
+
+#### Desktop View
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_wide.png?raw=true "Shelter Desktop View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_wide.png "Figma - Shelter - Desktop View")
 
 ### Final Layout
 
-- Insert Screenshot
+#### Mobil View
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/iphone.PNG?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/iphone.PNG "Shelter Mobil View")
+
+#### Medium View
+iPad Portrait:
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_portrait.PNG?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_portrait.PNG "Shelter Medium View - Portrait")
+
+iPad Landscape:
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_landscape.PNG?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_landscape.PNG "Shelter Medium View - Landscape")
+
+#### Desktop View
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/desktop_wide.png?raw=true "Shelter Desktop View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/desktop_wide.png "Shelter - Desktop View")
 
 ### Explanation for differences
 
+The following differences developed during creation:
+* Only show first letter of username instead of first initials of first- and lastname
+* Featured cards where displayed in carousel instead of horizontal cards
+* instead of notifications icon add gear icon was implemented
+* blog site was exchanged for about page
 
 ## Color Scheme
 
-- Insert Screenshot
+The color scheme was chosen with the goal to represent natural outdoorsy colors which reminds the visitor of the deep blue ocean, forrest full of green trees and some sunshine.
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/ux/colorscheme.png?raw=true "Color Scheme")](https://github.com/p0wen/shelter/blob/master/static/images/readme/ux/colorscheme.png "Shelter Color Scheme")
+
+Color Codes:
 - Blue #033F63
 - Green #288666
 - Green Pastel #7C9885
@@ -54,6 +82,8 @@ The following user stories were defined to outline the needed feature set.
 - Offwhite #F9F7F2
 
 ## Features
+
+The following list of features was created before the actual implementation:
 
 - Sign up
 - Log in
@@ -70,6 +100,7 @@ The following user stories were defined to outline the needed feature set.
 
 ### Exisiting Features
 
+These features made it into the MVP:
 - Sign up
 - Log in
 - Log out
@@ -82,6 +113,7 @@ The following user stories were defined to outline the needed feature set.
 
 ### Features Left to Implement
 
+The following features would be great for expansion stages after the initial market validation:
 - Create Categories
 - Edit Categories
 - Delete Categories
@@ -100,13 +132,16 @@ The following user stories were defined to outline the needed feature set.
 - Flask
 - Jinja
 - MongoDB
-- Bootstrap 4.6
+- Bootstrap 4.5.2
 - Gitpod
 - Git Version Control
 - GitHub
 - Heroku
 
 ## Testing
+
+Summary of test results:
+
 | Testcases / Device-Browser-Setup                                             	| iPhone<br>Safari                                               	| iPhone <br> Chrome                                             	| iPad<br> Safari                                                	| iPad <br> Brave                                                	| Mac<br>Safari                                                  	| Mac<br>Chrome                                                  	|
 |------------------------------------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|
 | Sign up                                                                      	| :white_check_mark:                                             	| :white_check_mark:                                             	| :white_check_mark:                                             	| :white_check_mark:                                             	| :white_check_mark:                                             	| :white_check_mark:                                             	|
@@ -267,20 +302,30 @@ For Gallery
 
 * Code Formatting from Pythoniter Pretty Python: https://pythoniter.appspot.com
 * Ran code through http://pep8online.com/
+Before:
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/testing/pep8dirty.png?raw=true "PEP8 Results")](https://github.com/p0wen/shelter/blob/master/static/images/readme/testing/pep8dirty.png "EP8 Results")
+After:
+[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/testing/pep8clean.png?raw=true "PEP8 Results")](https://github.com/p0wen/shelter/blob/master/static/images/readme/testing/pep8clean.png "EP8 Results")
 * Checked every page and subpage for HTML Validation Errors: https://validator.w3.org
+* Checked the https://jigsaw.w3.org/css-validator/#validate_by_input+with_options
 
 ### Known Bugs & Issues
+
+* sizing of images in caroussel could be harmonized for future development steps
+* nav bar not fixed on pages with little to no content
 
 ## Deployment
 
 ### Deployment
 
-#### Prerequisite
+This site is deployed to heroku and the versioning was done with git and the Repository is hosted on Github.
+
+#### Prerequisites to work with this Site
 
 - Dedicated MongoDB (Sign up at www.mongodb.com)
 - Optional: Heroku Account (Sign up at www.heroku.com)
 
-#### Step-by-Step
+#### Step-by-Step for Local Development
 
 Official Github Documentation on cloning a repositiory: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 
@@ -336,7 +381,6 @@ PORT = 5000
 9. Push changes to Heroku ```git push heroku master```
 10. Visit the app url from heroku and check out your great site!
 
-
 ## Credits
 
 ### Content
@@ -358,7 +402,7 @@ Content was written by me - only the integrated image url's are referencing to v
 * https://medium.com/@rsk.saikrishna/when-to-use-mongodb-rather-than-mysql-d03ceff2e922
 * Manual on how to work with env variable - https://pypi.org/project/environs/
 * how to make data available for more than one interaction - https://stackoverflow.com/questions/57537866/two-for-loops-in-one-html-page-using-jinja-not-working
-* how to work with loop.cycle webforefront.com/django/usebuiltinjinjastatements.html
+* how to work with loop.cycle webforefront.com/django/usebuiltinjinjastatements.html 
 * how to integrate a search function https://dzone.com/articles/flask-101-how-to-add-a-search-form
 * how to search through collections https://stackoverflow.com/questions/2824157/random-record-from-mongodb
 * how to work with $sample https://docs.mongodb.com/manual/reference/operator/aggregation/sample/
