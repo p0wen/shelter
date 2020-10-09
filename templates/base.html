@@ -13,12 +13,12 @@
 	<!-- local css -->
 	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
 
-	<title>Shelter</title>
+	<title>Shelter - The Outdoor Gear Community</title>
 </head>
 
 <body class="body-shelter">
     <wrapper class="d-flex flex-column">
-		<!-- Navbar -->
+		<!-- Navbar which gets build according to session state -->
 		<nav class="navbar sticky-top navbar-expand-lg navbar-dark nav-shelter">
 			<a class="navbar-brand"
 				href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/shelter_logo.svg')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Shelter</a>
@@ -39,6 +39,7 @@
 							<a class="nav-link" href="{{url_for('about')}}">About Us</a>
 						</li>
 					</ul>
+                <!--- Search Button to Search through collection for model, brand, category and description -->
                 <form method="POST" action="/">
                 <div class="form-row align-items-center">
                     <div class="col-auto">
@@ -56,6 +57,7 @@
                                 </div>
                 </form>
             </div>
+            <!-- Buttons for add gear and profile avatar if username is in session -->
             {% if 'username' in session %}
                 <ul class="nav navbar-nav">
                     <li class="d-none d-lg-block d-xl-block">
@@ -72,6 +74,7 @@
                     </li>
                 </ul>
             {% else %}
+            <!-- Display Sign up and Log in Button -->
                 <ul class="nav navbar-nav">
                     <li class="d-none d-lg-block d-xl-block">
                         <div class="vert-spacer nav-seperator"></div>
@@ -105,7 +108,7 @@
 		</div>
         </main>
 
-		<!-- Footer -->
+		<!-- Footer based on this theme https://codepen.io/scanfcode/pen/MEZPNd -->
 		<footer class="site-footer">
             <div class="container">
                 <div class="row">

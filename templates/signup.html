@@ -1,6 +1,7 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+<!-- Displaying Messages if an error occurs -->
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
@@ -18,7 +19,7 @@
 
 <h2>Sign up</h2>
 <div class="h2-spacer"></div>
-
+<!-- Form to collect preferred username and password -->
 <div class="container">
     <div class="row">
         <div>

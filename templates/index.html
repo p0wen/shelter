@@ -5,7 +5,7 @@
 
 <h2>Featured Gear</h2>
 <div class="h2-spacer"></div>
-
+<!-- display 3 random featured gear posts in carousel -->
 <div id="carouselExampleCaptions" class="carousel slide mb-2" data-ride="carousel">
   <ol class="carousel-indicators">
     {% for feat in rdm_feat %}
@@ -41,7 +41,7 @@
 
 <div class="container-fluid mb-2">
     <div class="row justify-content-between">
-
+<!-- Display the 6 most recent gear postings from the database -->
 {% for gear in gear_collection if not gear.is_featured %}
        <div class="card card-custom mb-1">
 			<img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">

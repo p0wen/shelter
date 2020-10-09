@@ -4,12 +4,12 @@
 
 <h2>#{{h2_title}}</h2>
 <div class="h2-spacer"></div>
-
+    <!-- Display Postings from chosen Category -->
     <div class="container-fluid">
     <div class="row justify-content-between">
     {% if post_by_category|length %}
     {% for post in post_by_category %}
-
+    <!-- If posts for this category are found create cards -->
 
             <div class="card card-custom mb-2">
                 <img src="{{post.img_url}}" class="card-img" alt="Gear Picture">
@@ -33,6 +33,7 @@
         
     {% endfor %}
     {% else %}
+    <!-- If nothing was found give the user the chance to sign up / create gear -->
     <div><p>Too bad... We couldn't find a posting in the Category...</p>
         {% if 'username' in session %}
             <p>Want to create the first post in this Categroy? <a href="{{url_for('add_gear' )}}">Add Gear now!</a></p>

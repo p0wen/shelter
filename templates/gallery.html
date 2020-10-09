@@ -4,12 +4,10 @@
 
 <h2>Gear Recommendations</h2>
 <div class="h2-spacer"></div>
-
+<!-- display all existing gear postings from database -->
 <div class="container-fluid">
     <div class="row justify-content-between">
 {% for gear in gear_collection %}
-
-
         <div class="card card-custom mb-2">
 			<img src="{{gear.img_url}}" class="card-img" alt="Gear Picture">
             <div class="card-body text-center">

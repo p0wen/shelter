@@ -1,9 +1,11 @@
 {% extends 'base.html' %} 
 
 {% block content %}
+<!-- Displaying Messages if an error occurs -->
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
+        <!-- Using the bootstrap alert component to display the message -->
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Ooops, something went wrong...</strong><br>
                 {{ message }}
@@ -15,12 +17,14 @@
     {% endif %}
 {% endwith %}
 
+<!-- Core Content of the Page-->
 <h2>Log in</h2>
 <div class="h2-spacer"></div>
 
 <div class="container">
     <div class="row">
         <div>
+        <!-- Requesting Username and Password to check creditials with data base and login -->
             <form method="POST" action="{{ url_for('login') }}">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
