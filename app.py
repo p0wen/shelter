@@ -19,7 +19,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 mongo = PyMongo(app)
 users = mongo.db.users
 gear = mongo.db.gear
-categories = mongo.db.categoriesa
+categories = mongo.db.categories
 
 gear.create_index([('model', 'text'), ('brand', 'text'),
                    ('description', 'text'),
@@ -317,7 +317,7 @@ def about():
     """
 
     return render_template('about.html',
-                           categories=list(mongo.db.categories.find()))
+                           categories=list(categories.find()))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
