@@ -82,10 +82,9 @@ wrapper {
 }
 
 button.navbar-toggler {
-    background:none;
+    background: none;
     border:none;
     color: #f9f7f2;
-    border-color: none;
 }
 
 /** Spacer **/
@@ -258,10 +257,10 @@ button.navbar-toggler {
     margin-top: 0.5rem;
   }
   .vert-spacer {
-    border: none;
-    border-right: none;
-    width: none;
-    height: none;
+    border: 0px;
+    border-right: 0px;
+    width: 0px;
+    height: 0px;
   }
 }
 
@@ -278,10 +277,10 @@ button.navbar-toggler {
     margin-top: 0.5rem;
   }
   .vert-spacer {
-    border: none;
-    border-right: none;
-    width: none;
-    height: none;
+    border: 0px;
+    border-right: 0px;
+    width: 0px;
+    height: 0px;
   }
 }
 
@@ -298,10 +297,10 @@ button.navbar-toggler {
     margin-top: 0.5rem;
   }
   .vert-spacer {
-    border: none;
-    border-right: none;
-    width: none;
-    height: none;
+    border: 0px;
+    border-right: 0px;
+    width: 0px;
+    height: 0px;
   }
 }
 
