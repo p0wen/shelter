@@ -162,50 +162,49 @@ button.navbar-toggler {
   margin-top:5px;
   letter-spacing:2px
 }
-.site-footer a
-{
+.site-footer a {
   color:#b4b682;
 }
-.site-footer a:hover
-{
+
+.site-footer a:hover {
   color: #fedc97;
   text-decoration:none;
 }
-.footer-links
-{
+
+.footer-links {
   padding-left:0;
   list-style:none
 }
-.footer-links li
-{
+
+.footer-links li {
   display:block
 }
-.footer-links a
-{
+
+.footer-links a {
   color:#b4b682
 }
-.footer-links a:active,.footer-links a:focus,.footer-links a:hover
-{
+
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover {
   color:#fedc97;
   text-decoration:none;
 }
-.footer-links.inline li
-{
+
+.footer-links.inline li {
   display:inline-block
 }
-.copyright-text
-{
+
+.copyright-text {
   margin:0
 }
-@media (max-width:991px)
-{
+
+@media (max-width:991px) {
   .site-footer [class^=col-]
   {
     margin-bottom:30px
   }
 }
-@media (max-width:767px)
-{
+
+@media (max-width:767px) {
   .site-footer
   {
     padding-bottom:0
