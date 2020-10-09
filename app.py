@@ -92,7 +92,7 @@ def signup():
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         else:
-            flash("That username already exists! Try another one")
+            flash("... your chosen username already exists! Try another one.")
             return render_template('signup.html', categories=list(categories.find()))
     return render_template('signup.html', categories=list(categories.find()))
 
@@ -117,10 +117,10 @@ def login():
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
             else:
-                flash("Wrong password")
+                flash("... it seems like you entered the wrong password")
                 return redirect(url_for('login'))
 
-        flash("User does not exist")
+        flash("... are you sure thats your username?")
         return redirect(url_for('login'))
     return render_template('login.html', categories=list(categories.find()))
 
