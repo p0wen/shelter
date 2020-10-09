@@ -414,3 +414,4 @@ Content was written by me - only the integrated image url's are referencing to v
 * sorting https://www.w3schools.com/python/python_mongodb_sort.asp 
 * where to position logout button https://uxdesign.cc/cognitive-behaviour-how-ux-designers-make-use-of-it-in-design-b9490b974dc1
 * footer based on this template https://codepen.io/scanfcode/pen/MEZPNd
+* table for read generated with the help from https://www.tablesgenerator.com/markdown_tables#
