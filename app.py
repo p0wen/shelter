@@ -171,7 +171,7 @@ def delete_account(user_id):
                 {"_id": ObjectId(user_id), "name": session["username"]})
             if del_acc:
                 session.pop('username', None)
-                users.remove({'_id': ObjectId(user_id)})
+                users.delete_one({'_id': ObjectId(user_id)})
                 return redirect(url_for('index'))
         return redirect(url_for('index'))
     return redirect(url_for('index'))
@@ -297,7 +297,7 @@ def delete_gear(gear_id):
     Removes specific document from collection by
     _id
     """
-    gear.remove({'_id': ObjectId(gear_id)})
+    gear.delete_one({'_id': ObjectId(gear_id)})
     return redirect(url_for('get_gear'))
 
 
