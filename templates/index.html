@@ -6,14 +6,14 @@
 <div class="h2-spacer"></div>
 <!-- display 3 random featured gear posts in carousel -->
 <div
-  id="carouselExampleCaptions"
+  id="gearCaptions"
   class="carousel slide mb-2"
   data-ride="carousel"
 >
   <ol class="carousel-indicators">
     {% for feat in rdm_feat %}
     <li
-      data-target="#carouselExampleCaptions"
+      data-target="#gearCaptions"
       data-slide-to="{{ loop.cycle('1','2', '3') }}"
       class="{{ loop.cycle('active','', '') }}"
     ></li>
@@ -38,7 +38,7 @@
   </div>
   <a
     class="carousel-control-prev"
-    href="#carouselExampleCaptions"
+    href="#gearCaptions"
     role="button"
     data-slide="prev"
   >
@@ -47,7 +47,7 @@
   </a>
   <a
     class="carousel-control-next"
-    href="#carouselExampleCaptions"
+    href="#gearCaptions"
     role="button"
     data-slide="next"
   >
