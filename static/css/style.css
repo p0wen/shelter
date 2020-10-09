@@ -135,7 +135,7 @@ button.navbar-toggler {
   margin-right: auto;
 }
 
-/** Footer based on this Theme https://codepen.io/scanfcode/pen/MEZPNd**/
+/** Footer based on this Theme https://codepen.io/scanfcode/pen/MEZPNd **/
 
 .site-footer
 {
@@ -329,6 +329,8 @@ button.navbar-toggler {
   overflow: hidden;
 }
 
+/** Media Queries **/
+
 @media (max-width: 575.98px) {
   .card-custom {
     max-width: 100%;
@@ -403,4 +405,3 @@ button.navbar-toggler {
     min-height: 20rem;
   }
 }
-/* insert media querys for tablet (max-width 14rem), mobile l (12ren), mobile m and smaller (max-width: 100%) */
