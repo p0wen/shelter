@@ -253,6 +253,7 @@ For Gallery
 
 * Code Formatting from Pythoniter Pretty Python: https://pythoniter.appspot.com
 * Ran code through http://pep8online.com/
+* Checked every page and subpage for HTML Validation Errors: https://validator.w3.org
 
 ### Known Bugs & Issues
 
