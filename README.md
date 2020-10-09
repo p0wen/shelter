@@ -251,6 +251,9 @@ For Gallery
 
 ### Validator Checks, Audits & Tools
 
+* Code Formatting from Pythoniter Pretty Python: https://pythoniter.appspot.com
+* Ran code through http://pep8online.com/
+
 ### Known Bugs & Issues
 
 ## Deployment
