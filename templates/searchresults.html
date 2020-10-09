@@ -1,45 +1,67 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h2>Search Results</h2>
 <!-- Rendering of Search Results if there are any otherwise display "Nothing found" -->
 <div class="h2-spacer"></div>
 {% if result|length %}
-    <div class="container-fluid">
-        <div class="row justify-content-between">
+<div class="container-fluid">
+  <div class="row justify-content-between">
     {% for item in result %}
     <div class="card card-custom mb-1">
-                <img src="{{item.img_url}}" class="card-img" alt="Gear Picture">
-                <div class="card-body text-center">
-                    <p class="card-text"><small>#{{item.category_name}}</small></p>
-                    <h5 class="card-title">{{item.model}} - {{item.brand}}</h5>
-                    <p class="card-text short-description">{{item.description}}</p>
-                    <p class="card-text text-bottom"><small class="text-muted">Rating:<br>{{item.score}} Stars</small></p>
-                </div>
-                <div class="card-footer card-footer-shelter text-center">
-                    <a href="{{url_for('gear_details', gear_id=item._id)}}" class="btn btn-primary btn btn-sm btn-outline-primary btn-third-shltr">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-journal-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
-                    <path fill-rule="evenodd" d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-                </svg>
-                Details
-                </a>
-                </div>
-            </div>
+      <img src="{{item.img_url}}" class="card-img" alt="Gear Picture" />
+      <div class="card-body text-center">
+        <p class="card-text"><small>#{{item.category_name}}</small></p>
+        <h5 class="card-title">{{item.model}} - {{item.brand}}</h5>
+        <p class="card-text short-description">{{item.description}}</p>
+        <p class="card-text text-bottom">
+          <small class="text-muted">Rating:<br />{{item.score}} Stars</small>
+        </p>
+      </div>
+      <div class="card-footer card-footer-shelter text-center">
+        <a
+          href="{{url_for('gear_details', gear_id=item._id)}}"
+          class="btn btn-primary btn btn-sm btn-outline-primary btn-third-shltr"
+        >
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-journal-text"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"
+            />
+            <path
+              d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"
+            />
+          </svg>
+          Details
+        </a>
+      </div>
+    </div>
     {% endfor %}
-    </div>
-    </div>
+  </div>
+</div>
 {% else %}
-    <div><p>Too bad... We couldn't find what you were looking for...</p>
-        {% if 'username' in session %}
-            <p>Do you want to create a gear report? <a href="{{url_for('add_gear' )}}">Add Gear now!</a></p>
-            {% else %}
-            <p>Do you want to be part of our community? <a href="{{ url_for('signup') }}">Sign up here!</a> </p>
-            {% endif %}
-    </div>
-        
-    {% endif %}
+<div>
+  <p>Too bad... We couldn't find what you were looking for...</p>
+  {% if 'username' in session %}
+  <p>
+    Do you want to create a gear report?
+    <a href="{{url_for('add_gear' )}}">Add Gear now!</a>
+  </p>
+  {% else %}
+  <p>
+    Do you want to be part of our community?
+    <a href="{{ url_for('signup') }}">Sign up here!</a>
+  </p>
+  {% endif %}
+</div>
 
-{% endblock %}
+{% endif %} {% endblock %}
