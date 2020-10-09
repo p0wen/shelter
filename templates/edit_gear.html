@@ -6,7 +6,7 @@
 <!-- Create Form with predefined values from database -->
 <form action="{{ url_for('update_gear', gear_id=gear._id) }}" method="POST">
   <div class="form-group">
-    <label for="modelInput">Model</label>
+    <label for="model">Model</label>
     <input
       type="text"
       class="form-control"
@@ -18,7 +18,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="brandInput">Brand</label>
+    <label for="brand">Brand</label>
     <input
       type="text"
       class="form-control"
@@ -30,7 +30,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="categoryInput">Category</label>
+    <label for="category_name">Category</label>
     <select class="form-control" id="category_name" name="category_name" required> 
       <option selected disabled value="">Choose your Category</option>
       {% for cat in category_sel %}
@@ -43,7 +43,7 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="descriptionInput">Description</label>
+    <label for="description">Description</label>
     <textarea
       class="form-control"
       id="description"
@@ -53,7 +53,7 @@
     >{{gear.description}}</textarea>
   </div>
   <div class="form-group">
-    <label for="ratingInput">Gear Rating - 1 (worst) to 5 (best) Stars</label>
+    <label for="score">Gear Rating - 1 (worst) to 5 (best) Stars</label>
     <input
       type="number"
       class="form-control"
@@ -66,7 +66,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="imageUrl">URL of Image</label>
+    <label for="img_url">URL of Image</label>
     <input
       type="text"
       class="form-control"
