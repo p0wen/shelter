@@ -8,7 +8,8 @@ Being outside and living an active life is a lot of fun. And even if you don't n
 
 This site is the third of four Milestone Projects that made up the Full Stack Web Development Course at *Code Institute*. The core reuqirements focus on bulding a fullstack site with the use of HTML, CSS, JavaScript, Phython (incl. Flask) and MangoDB. The final result is hosted on Heroku.
 
-Table of Content
+# Table of Content
+
   * [UX](#ux)
   * [User Stories](#user-stories)
   * [Wireframes](#wireframes)
@@ -29,9 +30,9 @@ Table of Content
     + [Validator Checks, Audits & Tools](#validator-checks--audits---tools)
     + [Known Bugs & Issues](#known-bugs---issues)
   * [Deployment](#deployment)
-    + [Local Deployment](#deployment-1)
+    + [Local Deployment](#local-deployment)
       - [Prerequisites to work with this Site](#prerequisites-to-work-with-this-site)
-      - [Step-by-Step for Local Development](#step-by-step-for-local-development)
+      - [Step-by-Step Instructions](#step-by-step-instructions)
     + [Deployment to Heroku](#deployment-to-heroku)
   * [Credits](#credits)
     + [Content](#content)
