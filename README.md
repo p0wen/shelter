@@ -42,12 +42,10 @@ The logo represents the flame of a campfire - which people love to gaze into and
 #### Components
 [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png?raw=true "Shelter Components")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png "Figma - Shelter Components")
 
-<img src="https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png?raw=true" width="50%">
 
 #### Mobil View
 [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png "Figma - Shelter Mobil View")
 
-<img src="https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png?raw=true" width="50%">
 
 #### Medium View
 [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png "Figma - Shelter Medium View")
