@@ -40,33 +40,30 @@ The logo represents the flame of a campfire - which people love to gaze into and
 [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/shelter_logo.svg?raw=true "Shelter Logo")](https://github.com/p0wen/shelter/blob/master/static/images/shelter_logo.svg "Shelter Logo")
 
 #### Components
+
 [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png?raw=true "Shelter Components")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_components.png "Figma - Shelter Components")
 
+#### Wireframes
 
-#### Mobil View
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png "Figma - Shelter Mobil View")
+|              | Screenshot                                                                                                                                                                                                                                                                         |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Desktop Wide | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_wide.png?raw=true "Shelter Desktop View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_wide.png "Figma - Shelter - Desktop View") |
+| Medium       | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png "Figma - Shelter Medium View") |
+| iPhone       | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_smartphone.png "Figma - Shelter Mobil View")     |
 
 
-#### Medium View
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_narrow.png "Figma - Shelter Medium View")
 
-#### Desktop View
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_wide.png?raw=true "Shelter Desktop View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/figma_desk_wide.png "Figma - Shelter - Desktop View")
 
 ### Final Layout
 
-#### Mobil View
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/iphone.PNG?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/iphone.PNG "Shelter Mobil View")
+|                | Screenshot                                                                                                                                                                                                                                                                                                 |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Desktop Wide   | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/desktop_wide.png?raw=true "Shelter Desktop View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/desktop_wide.png "Shelter - Desktop View")             |
+| iPad Landscape | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_landscape.PNG?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_landscape.PNG "Shelter Medium View - Landscape") |
+| iPad Portrait  | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_portrait.PNG?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_portrait.PNG "Shelter Medium View - Portrait")    |
+| iPhone         | [![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/iphone.PNG?raw=true "Shelter Mobil View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/iphone.PNG "Shelter Mobil View")                               |
 
-#### Medium View
-iPad Portrait:
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_portrait.PNG?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_portrait.PNG "Shelter Medium View - Portrait")
 
-iPad Landscape:
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_landscape.PNG?raw=true "Shelter Medium View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/ipad_landscape.PNG "Shelter Medium View - Landscape")
-
-#### Desktop View
-[![alt text](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/desktop_wide.png?raw=true "Shelter Desktop View")](https://github.com/p0wen/shelter/blob/master/static/images/readme/wireframes/final_result/desktop_wide.png "Shelter - Desktop View")
 
 ### Explanation for differences
 
