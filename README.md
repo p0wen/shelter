@@ -81,6 +81,41 @@ Color Codes:
 - Yellow #FEDC97
 - Offwhite #F9F7F2
 
+## Data Model
+
+The site is based on three data collections. The gear collection holds all the necessary data for the gear postings/recommendations. The categories collection manages the available categories for postings. The users collection handles the users credentials and its status. 
+
+### Gear Collection
+
+|               | Example Data                                                                         | Data Type |
+|---------------|--------------------------------------------------------------------------------------|-----------|
+| _id           | ObjectId(5f76e...809c)                                                               | ObjectID  |
+| model         | The Cave                                                                             | String    |
+| brand         | Heimplanet                                                                           | String    |
+| description   | This is a tent.<br>The structure is held by air pipes.<br>It is a very robust setup. | String    |
+| score         | 5                                                                                    | String    |
+| category_name | Camp                                                                                 | String    |
+| datecreated   | 2020-09-30                                                                           | String    |
+| author        | peter                                                                                | String    |
+
+### Categories Collection
+
+|               | Example Data           | Type     |
+|---------------|------------------------|----------|
+| _id           | ObjectId(5f76e...809c) | ObjectId |
+| category_name | Camp                   | String   |
+
+### Users Collection
+
+|                 | Example                                                   | Type     |
+|-----------------|-----------------------------------------------------------|----------|
+| _id             | ObjectId(5f76e...809c)                                    | ObjectId |
+| name            | peter                                                     | String   |
+| password        | Binary('JDJiJDEyJERJNHMvM...iRU5lSlVIa0RZQlpiQmlDaVJT', 0 | Binary   |
+| date_registered | 2020-10-06                                                | String   |
+| is_admin        | false                                                     | Boolean  |
+ 
+
 ## Features
 
 The following list of features was created before the actual implementation:
