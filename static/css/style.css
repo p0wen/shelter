@@ -1,11 +1,8 @@
 /* CSS main site styling */
-body,
-wrapper {
-  min-height: 100vh;
-}
 
 .body-shelter {
   background-color: #f9f7f2;
+  min-height: 100vh
 }
 
 /* Navigation */
@@ -143,6 +140,7 @@ button.navbar-toggler {
     font-size: 13px;
     line-height: 14px;
     color: #f9f7f1;
+    flex-shrink: 0;
 }
 .site-footer hr
 {
