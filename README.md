@@ -473,7 +473,8 @@ Content was written by me - only the integrated image url's are referencing to v
 - stackoverflow and medium for comprehensive content
 
 ### References 
-* https://medium.com/@rsk.saikrishna/when-to-use-mongodb-rather-than-mysql-d03ceff2e922
+* Code Institutes Task Manager Project was a great foundation to understand the basic CRUD functionalities
+* differences between mongodb and mysql https://medium.com/@rsk.saikrishna/when-to-use-mongodb-rather-than-mysql-d03ceff2e922
 * Manual on how to work with env variable - https://pypi.org/project/environs/
 * how to make data available for more than one interaction - https://stackoverflow.com/questions/57537866/two-for-loops-in-one-html-page-using-jinja-not-working
 * how to work with loop.cycle webforefront.com/django/usebuiltinjinjastatements.html 
