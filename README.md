@@ -193,6 +193,7 @@ The following features would be great for expansion stages after the initial mar
 - Add Gear to "My List" to create own "Shelter" 
 - Use Flask-Login for session and user management (increase security & handle password recovery)
 - File Upload for pictures to avoid external dependencies and copywrite
+- Image Caroussel for the gear details if more than one image was uploaded
 - Autocomplete for Search-Field
 
 ## Technologies Used
@@ -384,6 +385,7 @@ After:
 ### Known Bugs & Issues
 
 * sizing of images in caroussel could be harmonized for future development steps
+* form a code perspective the rendering of the delete post modal in the myprofile page could be enhanced through the use of javascript to inject the gear.id and remove the rendering of one modal per post.
 
 ## Deployment
 
@@ -488,3 +490,4 @@ Content was written by me - only the integrated image url's are referencing to v
 * footer based on this template https://codepen.io/scanfcode/pen/MEZ
 * table for read generated with the help from https://www.tablesgenerator.com/markdown_tables#
 * Table of Content generated with https://ecotrust-canada.github.io/markdown-toc/
+* create delete modals for each existing item instead of using JavaScript https://stackoverflow.com/questions/45874906/flask-and-javascript-confirm-before-deleting
