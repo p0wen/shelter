@@ -10,17 +10,21 @@ import bcrypt
 if os.path.exists('env.py'):
     import env
 
+# Assign Flask App Name
 app = Flask('__name__')
 
+# Setup Environment Variables
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
+# Define global Variables
 mongo = PyMongo(app)
 users = mongo.db.users
 gear = mongo.db.gear
 categories = mongo.db.categories
 
+# Index gear collection for search
 gear.create_index([('model', 'text'), ('brand', 'text'),
                    ('description', 'text'),
                    ('category_name', 'text')])
@@ -131,11 +135,10 @@ def logout():
     Removes the username from the session
     https://stackoverflow.com/questions/27747578/how-do-i-clear-a-flask-session
     """
-
-    username = session['username']
     if 'username' in session:
         session.pop('username', None)
         return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 
 @app.route('/myprofile/<user>')
@@ -319,8 +322,8 @@ def about():
     return render_template('about.html',
                            categories=list(categories.find()))
 
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=False)
-
