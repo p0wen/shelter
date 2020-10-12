@@ -186,10 +186,10 @@ These features made it into the MVP:
 ### Features Left to Implement
 
 The following features would be great for expansion stages after the initial market validation:
+- Server Side Validation to increase Security
 - Create Categories
 - Edit Categories
 - Delete Categories
-- Upload picture
 - Add Gear to "My List" to create own "Shelter" 
 - Use Flask-Login for session and user management (increase security & handle password recovery)
 - File Upload for pictures to avoid external dependencies and copywrite
@@ -269,7 +269,7 @@ Username does not exist:
 7. You should be informed that the user does not exist
 
 #### Search
-Happy Path
+Happy/Unhappy Path
 1. Open Browser
 2. Visit https://gearshelter.herokuapp.com/
 3. Type text into Search field and hit enter or press button
@@ -384,18 +384,16 @@ After:
 ### Known Bugs & Issues
 
 * sizing of images in caroussel could be harmonized for future development steps
-* nav bar not fixed on pages with little to no content
 
 ## Deployment
 
-### Local Deployment
-
 This site is deployed to heroku and the versioning was done with git and the Repository is hosted on Github.
+
+### Local Deployment
 
 #### Prerequisites to work with this Site
 
 - Dedicated MongoDB (Sign up at www.mongodb.com)
-- Optional: Heroku Account (Sign up at www.heroku.com)
 
 #### Step-by-Step Instructions
 
@@ -439,12 +437,14 @@ SECRET_KEY="<INSERT SECRET_KEY>"
 
 1. Log in to your Heroku account and create a new App.
 2. Set the environment variables in Settings > Reveal Config Variables
-3. The following Variables must be set
+3. The following Variables must be set 
+```
 MONGO_URI = mongodb+srv://<INSERT USERNAME>:<INSERT PASSWORD>@<INSERT CLUSTERNAME>.zbpbq.mongodb.net/<INSERT COLLECTION NAME>?retryWrites=true&w=majority
 MONGO_DBNAME = <INSERT YOUR COLLECTION NAME>
 SECRET_KEY = <INSERT YOUR SECRET KEY>
 IP = 0.0.0.0
 PORT = 5000
+```
 4. Create requirements.txt from your project with the help of ```pip3 freeze --local > requirements.txt ```
 5. Create a Procfile ```echo web: python app.py > Procfile``` 
 6. Commit changes to Git ```git add . ``` followed by ```git commit -m ""```
